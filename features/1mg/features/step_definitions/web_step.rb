@@ -3,10 +3,16 @@ require 'open-uri'
 require 'rspec/expectations'
 
 前提(/^: Hostヘッダ に "([\w\.]+)" をつけてHTTPでグローバルIPにリクエストする$/) do |host_header|
-  @gip = `ip -f inet addr show eth0`
-  @gip = @gip.scan(/\d+\.\d+\.\d+\.\d+/)
+  @ips = `ip -f inet addr show`
+  @ips = @ips.scan(/\d+\.\d+\.\d+\.\d+/)
+  for ip in @ips do
+    if ip != '127.0.0.1'
+      @gip = ip
+      break
+    end
+  end
 
-  @resource = open("http://#{@gip[0]}", "Host" => host_header)
+  @resource = open("http://#{@gip}", "Host" => host_header)
 end
 
 ならば(/^: レスポンスステータスが (\d+) だ$/) do |status|
