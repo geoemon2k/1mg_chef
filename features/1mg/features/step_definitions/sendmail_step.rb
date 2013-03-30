@@ -15,11 +15,23 @@
 end
 
 前提(/^: グローバルIPの (\d+) 番ポートへの アクセスするとエラーになる$/) do |port|
-  @gip = `ip -f inet addr show eth0`
-  @gip = @gip.scan(/\d+\.\d+\.\d+\.\d+/)
+  @ip = `ip -f inet addr show`
+  @ips = @ips.scan(/\d+\.\d+\.\d+\.\d+/)
+  for ip in @ips do
+    if ip != '127.0.0.1'
+      @gip = ip
+      break
+    end
+  end
+  
   require 'socket'
   s = Socket.new(Socket::AF_INET, Socket::SOCK_STREAM, 0)
-  sockaddr = Socket.sockaddr_in("#{port}", "#{@gip[0]}")
-  rise unless s.connect(sockaddr)
-  s.write "quit\r\n\r\n"
+  sockaddr = Socket.sockaddr_in("#{port}", "#{@gip}")
+  begin
+    ret = s.connect(sockaddr)
+  rescue
+  end
+  if ret == 0
+    raise
+  end
 end
