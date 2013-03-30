@@ -1,0 +1,27 @@
+$TTL 900
+@ IN SOA 1mg.org. root.1mg.org. (
+    2013030502 ; Serial
+    900 ; Refresh
+    450 ; Retry
+    43200 ; Expire
+    900 ) ; Minimum
+
+;NS
+@               IN NS NS1.MAIHAMA-NET.COM.
+@               IN NS NS2.MAIHAMA-NET.COM.
+
+;MX
+@               IN MX 10 www
+
+;SPF
+@               IN TXT "v=spf1 redirect=_spf.1mg.org"
+_spf            IN TXT "v=spf1 +ip4:210.172.144.0/24 183.76.0.0/16 ~all"
+
+;VPS
+@               IN A 183.181.14.200
+www             IN CNAME @
+server          IN A 183.181.14.200
+dev.server	IN A 164.46.240.32
+
+;DLV DNSSEC
+;dlv.1mg.org. 0 IN TXT "DLV:1:szleruhnshoo"

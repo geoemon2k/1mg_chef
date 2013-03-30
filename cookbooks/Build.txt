@@ -1,0 +1,16 @@
+curl -L https://www.opscode.com/chef/install.sh | bash
+mkdir -p /var/chef/cookbooks /tmp/chef-cache /var/chef/backups /etc/chef
+echo 'file_cache_path "/tmp/chef-cache" >> /etc/chef/solo.rb
+echo 'cookbook_path "/var/chef/cookbooks"' >> /etc/chef/solo.rb
+echo 'file_backup_path "/var/chef/backups" >> /etc/chef/solo.rb
+cd /var/chef/
+git clone  git clone git@github.com:geoemon2k/cookbooks.git
+hostname server.1mg.org
+chef-solo -j cookbooks/1mg.json
+mv /var/chef/cookbooks /home/uehata
+chown -R uehata:users /home/uehata
+ln -sf /home/uehata/cookbooks /var/chef
+
+tar zxvf 1mg.tar.gz -C /usr/local
+service httpd restart
+service mysqld restart

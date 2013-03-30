@@ -1,0 +1,15 @@
+$TTL 60
+@ IN SOA 1mg.biz. root.1mg.biz. (
+    2013020300 ; Serial
+    600 ; Refresh
+    300 ; Retry
+    43200; Expire
+    1800 ) ; Minimum
+;NS
+@               IN NS NS1.MAIHAMA-NET.COM.
+@               IN NS NS2.MAIHAMA-NET.COM.
+
+;VPS
+@               IN A 103.8.48.66
+git             IN A 210.152.137.65
+desktop         IN A 210.152.137.83
