@@ -15,7 +15,7 @@
 end
 
 前提(/^: グローバルIPの (\d+) 番ポートへの アクセスするとエラーになる$/) do |port|
-  @ip = `ip -f inet addr show`
+  @ips = `ip -f inet addr show`
   @ips = @ips.scan(/\d+\.\d+\.\d+\.\d+/)
   for ip in @ips do
     if ip != '127.0.0.1'
