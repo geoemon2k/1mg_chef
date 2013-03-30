@@ -1,16 +1,10 @@
-# language: ja
+# language :ja
 
-@sendmail @1mg
-機能: sendmail のセットアップ
-  sendmail のインストール
-  source 127.0.0.1 で LISTEN
-  port 25 で LISTEN
+機能: 外部メール送信
 
-シナリオ: sendmailをインストールする
-  前提: rpmコマンドで sendmail が取得できる
+シナリオ: 外部へのメールを送信が可能
+    前提: localhost の 25 番ポートから外部へメールを送信ができる
 
-シナリオ: sendmail を起動する
-  前提: serviceコマンドで status が running だ
+シナリオ: 外部からのメールを受け付けない
+    前提: グローバルIPの 25 番ポートへの アクセスするとエラーになる 
 
-シナリオ: IPアドレスが127.0.0.1で、ポート25番でLISTENする
-  前提: netstatコマンドで 127.0.0.1 でポートが 25 でLISTENしている
