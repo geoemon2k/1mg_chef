@@ -12,7 +12,7 @@ end
 
 もし(/^: 権威DNS グローバルIPアドレスへ ([\w\.]+) の SOA レコードを問い合わせる$/) do |domain|
   $resolver = Resolv::DNS.new(:nameserver => ["#{$gip}"])
-  @response = $resolver.getresource('yahoo.co.jp', Resolv::DNS::Resource::IN::SOA)
+  @response = $resolver.getresource(domain, Resolv::DNS::Resource::IN::SOA)
 end
 
 ならば(/^: serialが取得できる$/) do
