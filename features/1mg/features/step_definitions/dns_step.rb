@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require 'resolv'
 
 @ips = `ip -f inet addr show`
 @ips = @ips.scan(/\d+\.\d+\.\d+\.\d+/)
@@ -8,20 +9,20 @@ for ip in @ips do
     break
   end
 end
-  
+
 もし(/^: 権威DNS グローバルIPアドレスへ ([\w\.]+) の SOA レコードを問い合わせる$/) do |domain|
-  @response = `dig @#{$gip} #{domain} SOA|egrep 'status:|^#{domain}'`
+  $resolver = Resolv::DNS.new(:nameserver => ["#{$gip}"])
+  @response = $resolver.getresource('yahoo.co.jp', Resolv::DNS::Resource::IN::SOA)
 end
 
-ならば(/^: status が NOERROR で SOA レコードにシリアルが含まれている$/) do
-    @response.should match(/\:\s+NOERROR\,/)
-    @response.should match(/[\s\t]+IN[\s\t]+SOA[\s\t]+[\w\.\-]+\.[\s\t]+[\w\.\-]+\.[\s\t]+\d+\s+/)
+ならば(/^: serialが取得できる$/) do
+  @response.serial != ''
 end
 
-もし(/^: キャッシュDNS グローバルIPアドレスへ yahoo.co.jp の SOA レコードを問い合わせる$/) do
-  @response = `dig @#{$gip} yahoo.co.jp SOA|egrep 'status:'`
-end
-
-ならば(/^: statusが NOERROR ではない$/) do
-  raise if @response =~ /\:\s+NOERROR\,/
+もし(/^: キャッシュDNS グローバルIPアドレスへ yahoo.co.jp を問い合わせることができない$/) do
+  begin
+    @response = $resolver.getaddress('yahoo.co.jp')
+  rescue
+    p
+  end
 end
