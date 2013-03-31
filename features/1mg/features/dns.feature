@@ -13,4 +13,4 @@
 
 シナリオ: キャッシュDNS機能OFF確認
 もし: キャッシュDNS グローバルIPアドレスへ yahoo.co.jp の SOA レコードを問い合わせる
-ならば: statusが REFUSED である
+ならば: statusが NOERROR ではない

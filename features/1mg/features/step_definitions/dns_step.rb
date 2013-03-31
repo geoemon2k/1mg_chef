@@ -22,6 +22,6 @@ end
   @response = `dig @#{$gip} yahoo.co.jp SOA|egrep 'status:'`
 end
 
-ならば(/^: statusが REFUSED である$/) do
-    @response.should match(/\:\s+REFUSED\,/)
+ならば(/^: statusが NOERROR ではない$/) do
+  raise if @response =~ /\:\s+NOERROR\,/
 end
