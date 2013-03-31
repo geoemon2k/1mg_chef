@@ -13,7 +13,7 @@ end
   @response = `dig @#{$gip} #{domain} SOA|egrep 'status:|^#{domain}'`
 end
 
-ならば(/^: ならば: status が NOERROR で SOA レコードにシリアルが含まれている$/) do
+ならば(/^: status が NOERROR で SOA レコードにシリアルが含まれている$/) do
     @response.should match(/\:\s+NOERROR\,/)
     @response.should match(/[\s\t]+IN[\s\t]+SOA[\s\t]+[\w\.\-]+\.[\s\t]+[\w\.\-]+\.[\s\t]+\d+\s+/)
 p @response
