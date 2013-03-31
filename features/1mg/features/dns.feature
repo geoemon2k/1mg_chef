@@ -8,7 +8,7 @@
 ならば: status が NOERROR で SOA レコードにシリアルが含まれている
 
 シナリオ: 権威DNS機能確認(1mg.biz)
-もし: グローバルIPアドレスへ 1mg.org の SOA レコードを問い合わせる
+もし: グローバルIPアドレスへ 1mg.biz の SOA レコードを問い合わせる
 ならば: status が NOERROR で SOA レコードにシリアルが含まれている
 
 シナリオ: キャッシュDNS機能OFF確認
