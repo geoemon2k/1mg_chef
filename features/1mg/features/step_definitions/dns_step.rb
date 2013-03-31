@@ -19,8 +19,7 @@ end
 end
 
 もし(/^: キャッシュDNS グローバルIPアドレスへ yahoo.co.jp の SOA レコードを問い合わせる$/) do
-  @response = `dig @#{$ip} yahoo.co.jp SOA|egrep 'status:'`
-p @response
+  @response = `dig @#{$gip} yahoo.co.jp SOA|egrep 'status:'`
 end
 
 ならば(/^: statusが REFUSED である$/) do
