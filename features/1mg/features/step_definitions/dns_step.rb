@@ -15,12 +15,12 @@ end
 
 ならば(/^: status が NOERROR で SOA レコードにシリアルが含まれている$/) do
     @response.should match(/\:\s+NOERROR\,/)
-    @response.should match(/[\s\t]+IN[\s\t]+SOA[\s\t]+[\w\.\-]+\.[\s\t]+[\w\.\-]+\.[\s\t]+\d+\s+/)
+    @response.should match(/[\s\t]+IN[\s\t]+SOA[\s\t]+#{domain}[\s\t]+[\w\.\-]+\.[\s\t]+[\w\.\-]+\.[\s\t]+\d+\s+/)
 p @response
 end
 
 もし(/^: グローバルIPアドレスへ yahoo.co.jp の SOA レコードを問い合わせる$/) do
-  @response = `dig @#{$ip} yahoo.co.jp SOA|egrep 'status:'`
+  @response = `dig @#{$gip} yahoo.co.jp SOA|egrep 'status:'`
 end
 
 ならば(/^: statusが REFUSED である$/) do
