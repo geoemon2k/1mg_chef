@@ -12,5 +12,5 @@
 ならば: status が NOERROR で SOA レコードにシリアルが含まれている
 
 シナリオ: キャッシュDNS機能OFF確認
-もし: キャッシュDNSグローバルIPアドレスへ yahoo.co.jp の SOA レコードを問い合わせる
+もし: キャッシュDNS グローバルIPアドレスへ yahoo.co.jp の SOA レコードを問い合わせる
 ならば: statusが REFUSED である
