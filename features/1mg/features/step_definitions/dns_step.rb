@@ -24,5 +24,7 @@ end
     @response = $resolver.getaddress('yahoo.co.jp')
   rescue
     p
+  else
+    raise
   end
 end
