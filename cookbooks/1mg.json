@@ -1,11 +1,9 @@
 {
   "name": "1mg.org",
-  "node": {
-    "spawnfcgi": {
+  "spawnfcgi": {
     "owner" : "nginx",
     "group" : "nginx",
     "num" : "5"
-    }
   },
   "run_list": [
     "recipe[1mg::serversman]",
