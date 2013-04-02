@@ -15,10 +15,10 @@
     "recipe[sshd::default]",
     "recipe[nsd::default]",
     "recipe[nsd::set_zones]",
-    "recipe[spawn-fcgi::default]",
     "recipe[nginx::default]",
     "recipe[mysql::server]",
     "recipe[php::default]",
+    "recipe[spawn-fcgi::default]",
     "recipe[iptables::default]"
   ]
 }

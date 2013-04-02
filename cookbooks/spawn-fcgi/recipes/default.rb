@@ -11,14 +11,15 @@ package 'spawn-fcgi' do
   options '--enablerepo=epel'
 end
 
-service 'spawn-fcgi' do
-  action [:enable, :start]
-end
-
 template '/etc/sysconfig/spawn-fcgi' do
   source 'sysconfig.spawn-fcgi.erb'
   owner 'root'
   group 'root'
   mode 0644
+  notifies :restart, 'service[spawn-fcgi]'
+end
+
+service 'spawn-fcgi' do
+  action [:enable, :start]
 end
   
