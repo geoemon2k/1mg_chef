@@ -1,0 +1,5 @@
+default['spawn-fcgi']['socket'] = '/var/run/spawn-fcgi.socket'
+default['spawn-fcgi']['owner'] = 'apache'
+default['spawn-fcgi']['group'] = 'apache'
+default['spawn-fcgi']['num'] = '32'
+default['spawn-fcgi']['pid'] = '/var/run/spawn-fcgi.pid'
