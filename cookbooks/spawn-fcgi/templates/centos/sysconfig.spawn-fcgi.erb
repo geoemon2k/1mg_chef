@@ -6,5 +6,5 @@
 # Example :
 #SOCKET=/var/run/php-fcgi.sock
 #OPTIONS="-u apache -g apache -s $SOCKET -S -M 0600 -C 32 -F 1 -P /var/run/spawn-fcgi.pid -- /usr/bin/php-cgi"
-SOCKET=<% node.spawn-fcgi.socket %>
-OPTIONS="-u <% node.spawn-fcgi.owner %> -g <% node.spawn-fcgi.group %> -s $SOCKET -S -M 0600 -C <% node.spawn-fcgi.num %> -F 1 -P <% node.spawn-fcgi.pid %> -- /usr/bin/php-cgi"
+SOCKET=<%= node.spawnfcgi.socket %>
+OPTIONS="-u <%= node.spawnfcgi.owner %> -g <%= node.spawnfcgi.group %> -s $SOCKET -S -M 0600 -C <%= node.spawnfcgi.num %> -F 1 -P <%= node.spawnfcgi.pid %> -- /usr/bin/php-cgi"

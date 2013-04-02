@@ -1,4 +1,12 @@
 {
+  "name": "1mg.org",
+  "node": {
+    "spawnfcgi": {
+    "owner" : "nginx",
+    "group" : "nginx",
+    "num" : "5"
+    }
+  },
   "run_list": [
     "recipe[1mg::serversman]",
     "recipe[1mg::zcloud]",
@@ -9,10 +17,10 @@
     "recipe[sshd::default]",
     "recipe[nsd::default]",
     "recipe[nsd::set_zones]",
+    "recipe[spawn-fcgi::default]",
     "recipe[nginx::default]",
     "recipe[mysql::server]",
     "recipe[php::default]",
-    "recipe[phpfpm::default]",
     "recipe[iptables::default]"
   ]
 }

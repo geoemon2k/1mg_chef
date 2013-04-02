@@ -13,7 +13,6 @@ end
 
 service 'spawn-fcgi' do
   action [:enable, :start]
-  supports :restart
 end
 
 template '/etc/sysconfig/spawn-fcgi' do
