@@ -8,7 +8,6 @@
   "run_list": [
     "recipe[1mg::serversman]",
     "recipe[1mg::zcloud]",
-    "recipe[1mg::default]",
     "recipe[epel::default]",
     "recipe[remi::default]",
     "recipe[sendmail::default]",
@@ -19,6 +18,7 @@
     "recipe[mysql::server]",
     "recipe[php::default]",
     "recipe[spawn-fcgi::default]",
-    "recipe[iptables::default]"
+    "recipe[iptables::default]",
+    "recipe[1mg::default]"
   ]
 }
