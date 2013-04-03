@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: pcre
+# Cookbook Name:: pecl
 # Recipe:: module_APC
 #
 # Copyright 2013, YOUR_COMPANY_NAME
@@ -8,8 +8,8 @@
 #
 execute "install_APC" do
   action :run
-  command "pcre install APC"
-  not_if "pcre info APC"
+  command "pecl install APC"
+  not_if "pecl info APC"
   notifies :run, 'execute[fixed_php_ini_apc]'
 end
 

@@ -1,10 +1,10 @@
-# CHANGELOG for pcre
+# CHANGELOG for pecl
 
-This file is used to list changes made in each version of pcre.
+This file is used to list changes made in each version of pecl.
 
 ## 0.1.0:
 
-* Initial release of pcre
+* Initial release of pecl
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
