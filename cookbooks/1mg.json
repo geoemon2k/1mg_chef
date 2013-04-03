@@ -17,8 +17,8 @@
     "recipe[nginx::default]",
     "recipe[mysql::server]",
     "recipe[php::default]",
+    "recipe[php::module_pecl_apc]",
     "recipe[spawn-fcgi::default]",
-    "recipe[pecl::module_APC]",
     "recipe[iptables::default]",
     "recipe[1mg::default]"
   ]
