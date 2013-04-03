@@ -14,4 +14,3 @@ node.php.packages.each_pair do |package, options|
     end
   end
 end
-  
