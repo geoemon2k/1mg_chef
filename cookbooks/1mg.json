@@ -18,6 +18,7 @@
     "recipe[mysql::server]",
     "recipe[php::default]",
     "recipe[spawn-fcgi::default]",
+    "recipe[pecl::module_APC]",
     "recipe[iptables::default]",
     "recipe[1mg::default]"
   ]
