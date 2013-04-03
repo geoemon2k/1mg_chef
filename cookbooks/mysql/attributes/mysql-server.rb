@@ -1,4 +1,4 @@
-node.default['mysqld']['options'] = {
+default['mysqld']['options'] = {
   'socket' => '/var/lib/mysql/mysql.sock',
   'user' => 'mysql',
   'datadir' => '/usr/local/1mg/var/lib/mysql',
@@ -13,4 +13,5 @@ node.default['mysqld']['options'] = {
   'thread_stack' => '64K',
   'max_connections' => '2',
   'server-id' => '1'
-}
+},
+default['mysql']['repo'] = nil

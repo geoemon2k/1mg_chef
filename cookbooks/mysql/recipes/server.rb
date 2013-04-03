@@ -1,7 +1,7 @@
 package 'mysql-server' do
   action :install
-  if node.default['phpfpm']['install']
-    options '--enablerepo=remi'
+  if node['mysql']['repo']
+    options '--enablerepo='+node['mysql']['repo']
   end
 end
 
