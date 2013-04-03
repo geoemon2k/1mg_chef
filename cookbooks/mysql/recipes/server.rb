@@ -11,7 +11,7 @@ template '/etc/my.cnf' do
   group 'root'
   mode '0644'
   variables({
-    :mysqld => node[:mysqld]
+    :mysqld => node['mysqld']
   })
   notifies :restart, 'service[mysqld]'
 end

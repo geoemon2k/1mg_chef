@@ -13,5 +13,5 @@ default['mysqld']['options'] = {
   'thread_stack' => '64K',
   'max_connections' => '2',
   'server-id' => '1'
-},
+}
 default['mysql']['repo'] = nil
