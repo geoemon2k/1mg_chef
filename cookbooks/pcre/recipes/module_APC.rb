@@ -6,10 +6,10 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-execute "install_pcre_#{module}" do
+execute "install_APC" do
   action :run
-  command "pcre install #{module}"
-  not_if "pcre info ${module}"
+  command "pcre install APC"
+  not_if "pcre info APC"
   notifies :run, 'execute[fixed_php_ini_apc]'
 end
 
