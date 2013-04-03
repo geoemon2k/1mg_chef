@@ -7,6 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 package "php-pecl-apc" do
-  action :run
+  action :install
   notifies :restart, 'service[spawn-fcgi]'
 end
