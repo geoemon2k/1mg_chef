@@ -21,7 +21,6 @@ _spf            IN TXT "v=spf1 +ip4:210.172.144.0/24 183.76.0.0/16 ~all"
 @               IN A 183.181.14.200
 www             IN CNAME @
 server          IN A 183.181.14.200
-dev.server	IN A 164.46.240.32
 dev.www     IN A 210.152.137.228
 ;DLV DNSSEC
 ;dlv.1mg.org. 0 IN TXT "DLV:1:szleruhnshoo"
