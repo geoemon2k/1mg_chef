@@ -1,3 +1,1 @@
-node.default['pcre']['modules'] = [
-  "APC"
-]
+node.default['path']['phpini'] = '/etc/php.ini'
