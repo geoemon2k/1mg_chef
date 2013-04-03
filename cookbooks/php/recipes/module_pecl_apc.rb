@@ -8,13 +8,5 @@
 #
 package "php-pecl-apc" do
   action :run
-  not_if "pecl info APC"
-  notifies :run, 'execute[fixed_php_ini_apc]'
-end
-
-execute 'fixed_php_ini_apc' do
-  action :nothing
-  command "echo 'extention=apc.so' >> #{node.path.phpini}"
-  not_if "egrep '^extention=apc.so' #{node.path.phpini}"
   notifies :restart, 'service[spawn-fcgi]'
 end
