@@ -17,5 +17,6 @@ execute 'fixed_php_ini_apc' do
   action :nothing
   command "echo 'extention=apc.so' >> #{node.path.phpini}"
   not_if "egrep '^extention=apc.so' #{node.path.phpini}"
+  notifies :restart, 'service[spawn-fcgi]'
 end
-  
+
