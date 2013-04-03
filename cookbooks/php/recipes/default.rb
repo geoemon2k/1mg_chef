@@ -14,3 +14,8 @@ node.php.packages.each_pair do |package, options|
     end
   end
 end
+
+execute 'chown-libdirectory' do
+  command "chown -R #{node.spawnfcgi.owner}:#{node.spawnfcgi.group} /var/lib/php"
+  only_if "ls /var/lib/php"
+end
