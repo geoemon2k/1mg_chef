@@ -1,6 +1,6 @@
 $TTL 60
 @ IN SOA 1mg.biz. root.1mg.biz. (
-    2013040302 ; Serial
+    2013040303 ; Serial
     600 ; Refresh
     300 ; Retry
     43200; Expire
@@ -12,5 +12,5 @@ $TTL 60
 ;VPS
 @               IN A 103.8.48.66
 mon             IN A 210.152.137.221
-chefs			IN A 210.152.137.202
+chefs           IN A 210.152.137.202
 chefc           IN A 103.8.48.66
