@@ -38,3 +38,10 @@ execute 'newaliases' do
   action :nothing
   command 'newaliases'
 end
+
+cookbook_file '/var/chef/.git/hooks/post-merge' do
+  source 'post-merge'
+  owner 'root'
+  group 'root'
+  mode 0755
+end
