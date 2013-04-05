@@ -1,6 +1,3 @@
-mv /var/chef/cookbooks /home/uehata
-chown -R uehata:users /home/uehata
-ln -sf /home/uehata/cookbooks /var/chef
 ln -sf /opt/chef/embedded/bin/* /usr/local/bin/
 yum install -y git gcc
 gem install cucumber rspec
