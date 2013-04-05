@@ -1,4 +1,3 @@
-#!/bin/sh
 logger -p local1.info -t github "START:chef-solo"
 chef-solo -j /var/chef/1mg.json -c /etc/chef/solo.rb
 logger -p local1.info -t github "END:chef-solo"
