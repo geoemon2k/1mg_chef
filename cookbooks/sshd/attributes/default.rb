@@ -1,5 +1,5 @@
 node.default['options']['list'] = {
-  'PermitRootLogin' => 'no',
+  'PermitRootLogin' => 'yes',
   'ChallengeResponseAuthentication' => 'no',
   'IgnoreUserKnownHosts' => 'yes'
 }
