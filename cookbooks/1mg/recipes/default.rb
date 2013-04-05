@@ -45,3 +45,9 @@ cookbook_file '/var/chef/.git/hooks/post-merge' do
   group 'root'
   mode 0755
 end
+
+cron "Set_Pull_from_Github" do
+  action :create
+  user 'root'
+  command "cd /var/chef/;git pull origin master"
+end
