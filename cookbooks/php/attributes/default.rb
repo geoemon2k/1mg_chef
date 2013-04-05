@@ -1,4 +1,4 @@
-node.default['php']['packages'] = {
+default['php']['packages'] = {
   "php" => "",
   "php-mysql" => "",
   "php-mbstring" => "",
