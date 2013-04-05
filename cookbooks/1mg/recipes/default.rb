@@ -6,32 +6,19 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-user 'uehata' do
+directory '/root/.ssh' do
   action :create
-  uid 1000
-  gid 100
-  home '/home/uehata'
-  shell '/bin/bash'
-end
-
-directory '/home/uehata/.ssh' do
-  action :create
-  owner 'uehata'
-  group 'users'
+  owner 'root'
+  group 'root'
   mode '0700'
   recursive true
 end
 
-cookbook_file '/home/uehata/.ssh/authorized_keys' do
-  source "uehata.pub.key"
-  owner 'uehata'
-  group 'users'
+cookbook_file '/root/.ssh/authorized_keys' do
+  source "pub.key"
+  owner 'root'
+  group 'root'
   mode '0400'
-end
-
-user 'root' do
-  action :modify
-  password '$6$gVYWrVzD$hgXuNvY8DDzXJZCD3/r1eGaAbjtJ3fqbNlqrR9nAhIugI7n5TH5sOGKqaJl0.1IOmr24hrh.O4TlzECLQoN9a1'
 end
 
 execute 'add_hostname' do
