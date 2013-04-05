@@ -49,5 +49,5 @@ end
 cron "Set_Pull_from_Github" do
   action :create
   user 'root'
-  command "cd /var/chef/;git pull origin master"
+  command "cd /var/chef/;git pull origin master > /dev/null 2>&1"
 end
