@@ -10,6 +10,6 @@ $TTL 60
 @               IN NS NS2.MAIHAMA-NET.COM.
 
 mon             IN A 210.152.137.221
-chefs           IN A 210.152.137.202
+chefs           IN A 210.152.137.192
 ;VPS
 chefc           IN A 103.8.48.66
