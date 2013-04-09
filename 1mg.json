@@ -8,7 +8,7 @@
   "run_list": [
     "recipe[1mg::serversman]",
     "recipe[1mg::zcloud]",
-    "recipe[epel::default]",
+    "recipe[yum::epel]",
     "recipe[remi::default]",
     "recipe[sendmail::default]",
     "recipe[sshd::default]",
