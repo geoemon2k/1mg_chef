@@ -5,11 +5,19 @@
     "group" : "nginx",
     "num" : "5"
   },
+  "yum" : {
+    "remi" : {
+      "disabled" : true
+    },
+    "epel" : {
+      "disabled" : true
+    }
+  },
   "run_list": [
     "recipe[1mg::serversman]",
     "recipe[1mg::zcloud]",
     "recipe[yum::epel]",
-    "recipe[remi::default]",
+    "recipe[yum::remi]",
     "recipe[sendmail::default]",
     "recipe[sshd::default]",
     "recipe[nsd::default]",
