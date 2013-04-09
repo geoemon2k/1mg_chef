@@ -1,4 +1,4 @@
-<% @zones.list.each_pair do |key, value| -%>
+<% @node.zone.lists.each_pair do |key, value| -%>
 zone:
   name: <%= key %>
   zonefile: <%= value.zonefile %>
@@ -6,4 +6,3 @@ zone:
   provide-xfr: <%= value2 %> NOKEY
   <% end -%>
 <% end -%>
-

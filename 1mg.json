@@ -30,7 +30,6 @@
     "recipe[sendmail::default]",
     "recipe[sshd::default]",
     "recipe[nsd::default]",
-    "recipe[nsd::set_zones]",
     "recipe[nginx::default]",
     "recipe[mysql::server]",
     "recipe[php::default]",
