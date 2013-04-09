@@ -22,11 +22,14 @@ cookbook_file "#{etc_path}nsd.conf" do
   notifies :restart, 'service[nsd]'
 end
 
-template "#{etc_path}other.conf' do
+template "#{etc_path}other.conf" do
   source 'other.conf.erb'
   owner 'root'
   group 'root'
   mode '0644'
+  variables({
+    :zone => node[:zone]
+  })
   notifies :restart, 'service[nsd]'
 end
 
