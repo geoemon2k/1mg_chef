@@ -21,11 +21,16 @@ end
 
 if node.sshd.conf.lists != nil
   node.sshd.conf.lists.each_pair do |name, value|
-    execute "set_sshd_config_#{name}" do
+    execute "replace_set_sshd_config_#{name}" do
       command "sed -i -e \"s/^#{name} \.*/#{name} #{value}/g\" /etc/ssh/sshd_config"
       not_if "egrep '^#{name} #{value}' /etc/ssh/sshd_config"
       notifies :restart, 'service[sshd]'
-    end 
+    end
+    execute "add_sshd_config_#{name}" do
+      command "echo '#{name} #{value}' >> /etc/ssh/sshd_config"
+      not_if "egrep '^#{name} #{value}' /etc/ssh/sshd_config"
+      notifies :restart, 'service[sshd]'
+    end
   end
 end
 
