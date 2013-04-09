@@ -6,18 +6,30 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-package 'openssh-server' do
+case platform
+when "centos"
+  pkg_name = 'openssh-server'
+  service_name = 'sshd'
+when "ubuntu"
+  pkg_name = 'openssh-server'
+  service_name = 'ssh'
+end
+
+package "#{pkg_name}" do
   action :install
 end
 
-node.options.list.each_pair do |name, value|
-  execute "set_sshd_config_#{name}" do
-    command "sed -i -e \"s/^#{name} \.*/#{name} #{value}/g\" /etc/ssh/sshd_config"
-    not_if "egrep '^#{name} #{value}' /etc/ssh/sshd_config"
-    notifies :restart, 'service[sshd]'
-  end 
+if node.sshd.conf.lists != nil
+  node.sshd.conf.lists.each_pair do |name, value|
+    execute "set_sshd_config_#{name}" do
+      command "sed -i -e \"s/^#{name} \.*/#{name} #{value}/g\" /etc/ssh/sshd_config"
+      not_if "egrep '^#{name} #{value}' /etc/ssh/sshd_config"
+      notifies :restart, 'service[sshd]'
+    end 
+  end
 end
 
-service 'sshd' do
+
+service "#{service_name}" do
   action [:enable, :start]
 end

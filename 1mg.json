@@ -13,6 +13,15 @@
       "disabled" : true
     }
   },
+  "sshd" : {
+    "conf" : {
+      "lists" : {
+        "PermitRootLogin" : "yes",
+        "ChallengeResponseAuthentication" : "no",
+        "IgnoreUserKnownHosts" : "yes"
+      }
+    }
+  },
   "run_list": [
     "recipe[1mg::serversman]",
     "recipe[1mg::zcloud]",
