@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-case platform
+case node[:platform]
 when "centos"
   pkg_name = 'openssh-server'
   service_name = 'sshd'

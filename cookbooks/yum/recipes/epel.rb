@@ -1,5 +1,5 @@
 gpg_keyname = "RPM-GPG-KEY-EPEL-#{node[:platform_version].to_i}"
-if node['platform_version'].to_i > 5
+if node[:platform_version].to_i > 5
   url = "http://ftp.iij.ad.jp/pub/linux/fedora/epel/#{node['platform_version'].to_i}/#{node['kernel']['machine']}/epel-release-6-8.noarch.rpm"
 else
   url = "http://ftp.iij.ad.jp/pub/linux/fedora/epel/#{node['platform_version'].to_i}/#{node['kernel']['machine']}/epel-release-5-4.noarch.rpm"
