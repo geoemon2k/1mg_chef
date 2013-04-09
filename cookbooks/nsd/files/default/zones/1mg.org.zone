@@ -1,6 +1,6 @@
 $TTL 900
 @ IN SOA 1mg.org. root.1mg.org. (
-    2013040400 ; Serial
+    2013040900 ; Serial
     900 ; Refresh
     450 ; Retry
     43200 ; Expire
@@ -23,5 +23,6 @@ www             IN CNAME @
 server          IN A 183.181.14.200
 dev.www     IN A 210.152.137.228
 sm.www      IN A 210.152.137.208
+qa          IN A 210.152.137.203
 ;DLV DNSSEC
 ;dlv.1mg.org. 0 IN TXT "DLV:1:szleruhnshoo"
