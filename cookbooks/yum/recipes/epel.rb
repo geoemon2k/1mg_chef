@@ -25,4 +25,11 @@ if node['yum']['epel']['disabled']
     command "sed -i -e 's/enabled=1/enabled=0/g' /etc/yum.repos.d/epel.repo"
     only_if 'grep "enabled=1" /etc/yum.repos.d/epel.repo'
   end
+else
+  execute "enable_epel_repo" do
+    action :run
+    command "sed -i -e 's/enabled=0/enabled=1/g' /etc/yum.repos.d/epel.repo"
+    only_if 'grep "enabled=0" /etc/yum.repos.d/epel.repo'
+  end
 end
+
