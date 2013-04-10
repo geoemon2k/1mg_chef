@@ -1,7 +1,7 @@
-package 'mysql-server' do
+package node['mysqld']['package'] do
   action :install
-  if node['mysql']['repo']
-    options '--enablerepo='+node['mysql']['repo']
+  if node['mysqld']['repo_source']
+    options '--enablerepo='+node['mysql']['repo_source']
   end
 end
 
@@ -11,11 +11,12 @@ template '/etc/my.cnf' do
   group 'root'
   mode '0644'
   variables({
-    :mysqld => node['mysqld']
+    :conf_options => node['mysqld']['conf_options']
   })
   notifies :restart, 'service[mysqld]'
 end
 
 service 'mysqld' do
   action [:enable, :start]
+  supports :status => true, :restart => true
 end
