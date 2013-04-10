@@ -17,8 +17,13 @@ package "#{pkg_name}" do
   end
 end
 
-cookbook_file "#{etc_path}nsd.conf" do
-  source 'nsd.conf'
+template "#{etc_path}nsd.conf" do
+  source 'nsd.conf.erb'
+  owner 'root'
+  group 'root'
+  variables({
+    :etc_path => etc_path
+  })
   notifies :restart, 'service[nsd]'
 end
 
@@ -28,7 +33,7 @@ template "#{etc_path}other.conf" do
   group 'root'
   mode '0644'
   variables({
-    :zone => node[:zone]
+    :nsd => node[:nsd]
   })
   notifies :restart, 'service[nsd]'
 end
