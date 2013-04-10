@@ -1,7 +1,7 @@
-default['php_mbcrypt']['package'] = 'php_mbstring'
-default['php_mbcrypt']['repo_source'] = nil
+default['php_mcrypt']['package'] = 'php_mbstring'
+default['php_mcrypt']['repo_source'] = nil
 
 case node[:platform]
 when 'centos'
-  default['php_mbcrypt']['repo_source'] = 'epel'
+  default['php_mcrypt']['repo_source'] = 'epel'
 end
