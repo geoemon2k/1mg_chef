@@ -6,35 +6,26 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-case node[:platform]
-when "centos"
-  pkg_name = 'openssh-server'
-  service_name = 'sshd'
-when "ubuntu"
-  pkg_name = 'openssh-server'
-  service_name = 'ssh'
-end
-
-package "#{pkg_name}" do
+package node['sshd']['package'] do
   action :install
 end
 
 if node.sshd.conf_lists
   node.sshd.conf_lists.each_pair do |name, value|
     execute "replace_set_sshd_config_#{name}" do
-      command "sed -i -e \"s/^#{name} \.*/#{name} #{value}/g\" /etc/ssh/sshd_config"
-      not_if "egrep '^#{name} #{value}' /etc/ssh/sshd_config"
-      notifies :restart, 'service[sshd]'
+      command "sed -i -e \"s/^#{name} \.*/#{name} #{value}/g\" #{default['sshd']['dir']}sshd_config"
+      not_if "egrep '^#{name} #{value}' #{default['sshd']['dir']}sshd_config"
+      notifies :restart, "service[#{default['sshd']['service_name']}]"
     end
     execute "add_sshd_config_#{name}" do
-      command "echo '#{name} #{value}' >> /etc/ssh/sshd_config"
-      not_if "egrep '^#{name} #{value}' /etc/ssh/sshd_config"
-      notifies :restart, 'service[sshd]'
+      command "echo '#{name} #{value}' >> #{default['sshd']['dir']}sshd_config"
+      not_if "egrep '^#{name} #{value}' #{default['sshd']['dir']}sshd_config"
+      notifies :restart, "service[#{default['sshd']['service_name']}]"
     end
   end
 end
 
-
-service "#{service_name}" do
+service default['sshd']['service_name'] do
   action [:enable, :start]
+  supports :status => true, :restart => true
 end
