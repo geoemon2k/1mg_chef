@@ -19,7 +19,11 @@ template '/etc/sysconfig/spawn-fcgi' do
   notifies :restart, 'service[spawn-fcgi]'
 end
 
+execute 'chown-libdirectory' do
+  command "chown -R #{node.spawnfcgi.owner}:#{node.spawnfcgi.group} /var/lib/php"
+  only_if "ls /var/lib/php"
+end
+
 service 'spawn-fcgi' do
   action [:enable, :start]
 end
-  

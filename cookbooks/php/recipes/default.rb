@@ -6,16 +6,9 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-node.php.packages.each_pair do |package, options|
-  package "#{package}" do
-    action :install
-    if "#{options}" != ''
-      options "#{options}"
-    end
-  end
+package node['php']['package'] do
+  action :install
+  if node['php']['repo_source']
+    options '--enablerepo='+node['php']['repo_source']
 end
 
-execute 'chown-libdirectory' do
-  command "chown -R #{node.spawnfcgi.owner}:#{node.spawnfcgi.group} /var/lib/php"
-  only_if "ls -al /var/lib/php"
-end
