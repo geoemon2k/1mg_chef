@@ -1,36 +1,25 @@
-options = nil
-case node[:platform]
-when "centos"
-  pkg_name = 'nsd'
-  etc_path = '/etc/nsd/'
-  options = '--enablerepo=epel'
-when "ubuntu"
-  pkg_name = 'nsd3'
-  etc_path = '/etc/nsd3/'
-end
-
-package "#{pkg_name}" do
+package node['nsd']['package'] do
   action :install
 
-  if "#{options}" != nil
-    options "#{options}"
+  if node['nsd']['repo_source'] != nil
+    options "--enablerepo="+node['nsd']['repo_source']
   end
 end
 
-template "#{etc_path}nsd.conf" do
+template node['nsd']['dir']+"nsd.conf" do
   source 'nsd.conf.erb'
   owner 'root'
   group 'root'
   variables({
-    :etc_path => etc_path
+    :nsd => nsd
   })
   notifies :restart, 'service[nsd]'
 end
 
-template "#{etc_path}other.conf" do
+template node['nsd']['dir']+"other.conf" do
   source 'other.conf.erb'
-  owner 'root'
-  group 'root'
+  owner node['nsd']['user']
+  group node['nsd']['group']
   mode '0644'
   variables({
     :nsd => node[:nsd]
@@ -38,18 +27,18 @@ template "#{etc_path}other.conf" do
   notifies :restart, 'service[nsd]'
 end
 
-directory "#{etc_path}zones" do
+directory node['nsd']['dir']+node['nsd']['zones_dir'] do
   action :create
-  owner 'nsd'
-  group 'nsd'
+  owner node['nsd']['user']
+  group node['nsd']['group']
   mode '0755'
 end
 
 node.nsd.zone_lists.each_pair do |zone_name, value|
-  cookbook_file "#{etc_path}zones/#{zone_name}.zone" do
-    source "zones/#{zone_name}.zone"
-    owner 'nsd'
-    group 'nsd'
+  cookbook_file node['nsd']['dir']+"zones/#{zone_name}.zone" do
+    source node['nsd']['zones_dir']+"#{zone_name}.zone"
+    owner node['nsd']['user']
+    group node['nsd']['group']
     mode '0644'
     notifies :rebuild, 'service[nsd]'
     notifies :reload, 'service[nsd]'
