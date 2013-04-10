@@ -8,26 +8,39 @@
 #
 package 'nginx' do
   action :install
-  options '--enablerepo=epel'
+  if node['nginx']['repo_source'] != nil
+    options "--enablerepo=#{node.nginx.repo_source}"
+  end
 end
 
-file '/etc/nginx/conf.d/default.conf' do
-  action :delete
+template node['nginx']['dir']+"nginx.conf" do
+  source "nginx.conf.erb"
+  owner node['nginx']['user']
+  group node['nginx']['group']
+  mode  0644
+  notifies :reload, 'service[nginx]'
 end
 
-node.conf.list.each do |filename|
+directory node['nginx']['dir']+"conf.d/" do
+  action :create
+  owner node['nginx']['user']
+  group node['nginx']['group']
+  mode  0755
+end
+
+node.nginx.conf_lists.each do |filename|
   if #{filename} != '' do
-    cookbook_file "/etc/nginx/conf.d/#{filename}" do
+    cookbook_file node['nginx']['dir']+node['nginx']['include_dir']+"#{filename}" do
       source "#{filename}"
-      owner 'nginx'
-      group 'nginx'
+      owner node['nginx']['user']
+      group node['nginx']['group']
       mode  0644
-      notifies :restart, 'service[nginx]'
+      notifies :reload, 'service[nginx]'
     end
   end
 end
 
 service 'nginx' do
   action [:enable, :start]
+  supports :status => true, :restart => true, :reload => true
 end
-

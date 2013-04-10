@@ -45,7 +45,7 @@ directory "#{etc_path}zones" do
   mode '0755'
 end
 
-node.zone.lists.each_pair do |zone_name, value|
+node.nsd.zone_lists.each_pair do |zone_name, value|
   cookbook_file "#{etc_path}zones/#{zone_name}.zone" do
     source "zones/#{zone_name}.zone"
     owner 'nsd'
