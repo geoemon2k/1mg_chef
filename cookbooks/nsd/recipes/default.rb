@@ -34,13 +34,15 @@ directory node['nsd']['dir']+node['nsd']['zones_dir'] do
   mode '0755'
 end
 
-node.nsd.zone_lists.each_pair do |zone_name, value|
-  cookbook_file node['nsd']['dir']+"zones/#{zone_name}.zone" do
-    source node['nsd']['zones_dir']+"#{zone_name}.zone"
-    owner node['nsd']['user']
-    group node['nsd']['group']
-    mode '0644'
-    notifies :reload, 'service[nsd]'
+if node['nsd']['zone_lists']
+  node['nsd']['zone_lists'].each_pair do |zone_name, value|
+    cookbook_file node['nsd']['dir']+"zones/#{zone_name}.zone" do
+      source node['nsd']['zones_dir']+"#{zone_name}.zone"
+      owner node['nsd']['user']
+      group node['nsd']['group']
+      mode '0644'
+      notifies :reload, 'service[nsd]'
+    end
   end
 end
 
