@@ -40,7 +40,6 @@ node.nsd.zone_lists.each_pair do |zone_name, value|
     owner node['nsd']['user']
     group node['nsd']['group']
     mode '0644'
-    notifies :rebuild, 'service[nsd]'
     notifies :reload, 'service[nsd]'
   end
 end
