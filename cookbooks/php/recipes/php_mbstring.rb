@@ -9,6 +9,7 @@
 package node['php_mbstring']['package'] do
   action :install
   if node['php_mbstring']['repo_source']
-    options '--enablerepo='+node['php_mbstring']['repo_source']
+    options "--enablerepo=#{node.php_mbstring.repo_source}"
+  end
 end
 

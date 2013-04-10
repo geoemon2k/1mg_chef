@@ -9,6 +9,7 @@
 package node['php_mcrypt']['package'] do
   action :install
   if node['php_mcrypt']['repo_source']
-    options '--enablerepo='+node['php_mcrypt']['repo_source']
+    options "--enablerepo=#{node.php_mcrypt.repo_source}"
+  end
 end
 

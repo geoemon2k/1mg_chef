@@ -9,6 +9,7 @@
 package node['php']['package'] do
   action :install
   if node['php']['repo_source']
-    options '--enablerepo='+node['php']['repo_source']
+    options "--enablerepo=#{node.php.repo_source}"
+  end
 end
 
