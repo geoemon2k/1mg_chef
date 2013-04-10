@@ -19,8 +19,8 @@ package "#{pkg_name}" do
   action :install
 end
 
-if node.sshd.conf.lists != nil
-  node.sshd.conf.lists.each_pair do |name, value|
+if node.sshd.conf_lists
+  node.sshd.conf_lists.each_pair do |name, value|
     execute "replace_set_sshd_config_#{name}" do
       command "sed -i -e \"s/^#{name} \.*/#{name} #{value}/g\" /etc/ssh/sshd_config"
       not_if "egrep '^#{name} #{value}' /etc/ssh/sshd_config"

@@ -14,12 +14,10 @@
     }
   },
   "sshd" : {
-    "conf" : {
-      "lists" : {
-        "PermitRootLogin" : "yes",
-        "ChallengeResponseAuthentication" : "no",
-        "IgnoreUserKnownHosts" : "yes"
-      }
+    "conf_lists" : {
+      "PermitRootLogin" : "yes",
+      "ChallengeResponseAuthentication" : "no",
+      "IgnoreUserKnownHosts" : "yes"
     }
   },
   "nsd" : {

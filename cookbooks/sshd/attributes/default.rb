@@ -1,1 +1,1 @@
-default['sshd']['conf']['lists'] = nil
+default['sshd']['conf_lists'] = nil
