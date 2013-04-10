@@ -39,7 +39,7 @@
   },
   "mysqld" : {
     "conf_options" : {
-      "data_dir" : "/usr/local/1mg/var/lib/mysql/"
+      "datadir" : "/usr/local/1mg/var/lib/mysql/"
     }
   },
   "run_list": [
