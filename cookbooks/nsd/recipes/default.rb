@@ -22,7 +22,7 @@ template node['nsd']['dir']+"other.conf" do
   group node['nsd']['group']
   mode '0644'
   variables({
-    :nsd => node[:nsd]
+    :zone_lists => node['nsd']['zone_lists']
   })
   notifies :restart, 'service[nsd]'
 end
