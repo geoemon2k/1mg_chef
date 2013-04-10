@@ -11,7 +11,7 @@ template node['nsd']['dir']+"nsd.conf" do
   owner 'root'
   group 'root'
   variables({
-    :nsd => nsd
+    :dir => node['nsd']['dir']
   })
   notifies :restart, 'service[nsd]'
 end
