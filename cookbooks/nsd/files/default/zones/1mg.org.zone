@@ -1,6 +1,6 @@
 $TTL 900
 @ IN SOA 1mg.org. root.1mg.org. (
-    2013040902 ; Serial
+    2013042700 ; Serial
     900 ; Refresh
     450 ; Retry
     43200 ; Expire
@@ -20,7 +20,9 @@ _spf            IN TXT "v=spf1 +ip4:210.172.144.0/24 183.76.0.0/16 ~all"
 ;VPS
 @               IN A 183.181.14.200
 www             IN CNAME @
+www				IN AAAA 2001:2e8:624:0:2:1:0:cc
 server          IN A 183.181.14.200
+server          IN AAAA 2001:2e8:624:0:2:1:0:cc
 dev.www     IN A 210.152.137.228
 sm.www      IN A 210.152.137.208
 qa          IN A 210.152.137.203
