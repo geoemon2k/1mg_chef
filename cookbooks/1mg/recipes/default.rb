@@ -29,8 +29,8 @@ end
 
 execute 'set_root' do
   action :run
-  command "echo 'root: #{node.email.root}' >> /etc/aliases"
-  not_if "egrep '^root:' /etc/aliases"
+  command "echo 'root: #{node.1mg.root_address}' >> /etc/aliases"
+  not_if "egrep '^root: #{node.1mg.root_address}' /etc/aliases"
   notifies :run, 'execute[newaliases]'
 end
 
