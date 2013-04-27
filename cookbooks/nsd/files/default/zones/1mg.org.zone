@@ -18,8 +18,7 @@ $TTL 900
 _spf            IN TXT "v=spf1 +ip4:210.172.144.0/24 183.76.0.0/16 ~all"
 
 ;VPS
-@               IN A 183.181.14.200
-www             IN CNAME @
+www             IN A 183.181.14.200
 www				IN AAAA 2001:2e8:624:0:2:1:0:cc
 server          IN A 183.181.14.200
 server          IN AAAA 2001:2e8:624:0:2:1:0:cc
