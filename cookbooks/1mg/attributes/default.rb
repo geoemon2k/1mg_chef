@@ -1,6 +1,6 @@
 default['1mg']['root_address'] = 'keiji.ue@gmail.com'
 case node[:platform]
-when centos', 'fedora'
+when 'centos', 'fedora'
   default['1mg']['stop_services'] = [
     'saslauthd',
     'xinetd',
