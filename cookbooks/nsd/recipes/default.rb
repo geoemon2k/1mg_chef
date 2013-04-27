@@ -41,7 +41,6 @@ if node['nsd']['zone_lists']
       notifies :reload, 'service[nsd]'
     end
   end
-  recursive true
 end
 
 service 'nsd' do
