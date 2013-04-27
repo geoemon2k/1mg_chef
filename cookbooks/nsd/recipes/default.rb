@@ -9,9 +9,7 @@ template node['nsd']['dir']+"nsd.conf" do
   source 'nsd.conf.erb'
   owner 'root'
   group 'root'
-  variables({
-    :dir => node['nsd']['dir']
-  })
+  mode '0644'
   notifies :restart, 'service[nsd]'
 end
 
