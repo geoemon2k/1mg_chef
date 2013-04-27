@@ -23,14 +23,14 @@ end
 
 execute 'add_hostname' do
   action :run
-  command "echo 'HOSTNAME=#{node.fqdn}' >> /etc/sysconfig/network"
-  not_if "egrep '^HOSTNAME=#{node.fqdn}' /etc/sysconfig/network"
+  command "echo 'HOSTNAME="+node['fqdn']+"' >> /etc/sysconfig/network"
+  not_if "egrep '^HOSTNAME="+node['fqdn']+"' /etc/sysconfig/network"
 end
 
 execute 'set_root' do
   action :run
-  command "echo 'root: #{node.1mg.root_address}' >> /etc/aliases"
-  not_if "egrep '^root: #{node.1mg.root_address}' /etc/aliases"
+  command "echo 'root: "+node['1mg']['root_address']+"' >> /etc/aliases"
+  not_if "egrep '^root: "+node['1mg']['root_address']+"' /etc/aliases"
   notifies :run, 'execute[newaliases]'
 end
 
