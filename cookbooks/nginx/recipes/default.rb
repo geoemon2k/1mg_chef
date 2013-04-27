@@ -28,10 +28,10 @@ directory node['nginx']['dir']+"conf.d/" do
   mode  0755
 end
 
-node.nginx.conf_lists.each do |filename|
+node.nginx.conf_list.each do |filename|
   if #{filename} != '' do
-    cookbook_file node['nginx']['dir']+node['nginx']['include_dir']+"#{filename}" do
-      source "#{filename}"
+    cookbook_file node['nginx']['dir']+node['nginx']['include_dir']+filename do
+      source filename
       owner node['nginx']['user']
       group node['nginx']['group']
       mode  0644
@@ -42,5 +42,5 @@ end
 
 service 'nginx' do
   action [:enable, :start]
-  supports :status => true, :restart => true, :reload => true
+  supports :status => true, :restart => true
 end

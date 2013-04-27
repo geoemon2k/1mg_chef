@@ -1,0 +1,9 @@
+<% node['nsd']['zone_list'].each_pair do |key, value| -%>
+zone:
+  name: <%= key %>
+  zonefile: <%= value.zonefile %>
+  <% value.xfr.each do |value2| -%>
+  provide-xfr: <%= value2 %> NOKEY
+  <% end -%>
+<% end -%>
+
