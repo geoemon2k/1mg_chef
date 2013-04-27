@@ -1,5 +1,5 @@
 [mysqld]
-<% node['mysqld']['config_options'].each_pair do |key, value| -%>
+<% node['mysqld']['conf_options'].each_pair do |key, value| -%>
 <%= "#{key} = #{value}" %>
 <% end -%>
 # Disabling symbolic-links is recommended to prevent assorted security risks
