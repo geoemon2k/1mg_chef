@@ -41,8 +41,7 @@
     }
   },
   "run_list": [
-    "recipe[1mg::serversman]",
-    "recipe[1mg::zcloud]",
+    "recipe[1mg::stop_service]",
     "recipe[yum::epel]",
     "recipe[yum::remi]",
     "recipe[sendmail::default]",

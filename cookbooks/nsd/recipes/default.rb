@@ -1,8 +1,7 @@
 package node['nsd']['package'] do
   action :install
-
-  if node['nsd']['repo_source'] != nil
-    options "--enablerepo="+node['nsd']['repo_source']
+  if node['nsd']['install_option']
+    options node['nsd']['install_option']
   end
 end
 
@@ -10,9 +9,7 @@ template node['nsd']['dir']+"nsd.conf" do
   source 'nsd.conf.erb'
   owner 'root'
   group 'root'
-  variables({
-    :dir => node['nsd']['dir']
-  })
+  mode '0644'
   notifies :restart, 'service[nsd]'
 end
 
@@ -44,6 +41,7 @@ if node['nsd']['zone_lists']
       notifies :reload, 'service[nsd]'
     end
   end
+  recursive true
 end
 
 service 'nsd' do
