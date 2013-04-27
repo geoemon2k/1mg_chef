@@ -1,2 +1,2 @@
 default['php']['package'] = 'php'
-default['php']['repo_source'] = nil
+default['php']['install_option'] = nil
