@@ -2,9 +2,9 @@ proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=czone:4m max_size=200m in
 proxy_temp_path /tmp/nginx;
 
 server {
-<%= if node['ip6address'] do %> 
+<%- if node['ip6address'] do %> 
     listen [<%= node[:ip6address] %>]:80;
-<%= end %>
+<%- end %>
     listen       <%= node['ipaddress'] %>:80;
 
     server_name  server.1mg.org;
