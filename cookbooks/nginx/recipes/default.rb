@@ -28,16 +28,20 @@ directory node['nginx']['dir']+"conf.d/" do
   mode  0755
 end
 
-node.nginx.conf_list.each do |filename|
-  if #{filename} != '' do
-    cookbook_file node['nginx']['dir']+node['nginx']['include_dir']+filename do
-      source filename
-      owner node['nginx']['user']
-      group node['nginx']['group']
-      mode  0644
-      notifies :reload, 'service[nginx]'
-    end
-  end
+temmplate node['nginx']['dir']+node['nginx']['include_dir']+"server.1mg.org.conf" do
+  source "server.1mg.org.conf.erb"
+  owner node['nginx']['user']
+  group node['nginx']['group']
+  mode  0644
+  notifies :reload, 'service[nginx]'
+end
+
+temmplate node['nginx']['dir']+node['nginx']['include_dir']+"www.1mg.org.conf" do
+  source "server.1mg.org.conf.erb"
+  owner node['nginx']['user']
+  group node['nginx']['group']
+  mode  0644
+  notifies :reload, 'service[nginx]'
 end
 
 service 'nginx' do
