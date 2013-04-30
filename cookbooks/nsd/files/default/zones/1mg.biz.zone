@@ -1,6 +1,6 @@
 $TTL 60
 @ IN SOA 1mg.biz. root.1mg.biz. (
-    2013041000 ; Serial
+    2013043000 ; Serial
     600 ; Refresh
     300 ; Retry
     43200; Expire
@@ -18,3 +18,4 @@ ws              IN A 210.152.137.163
 k1              IN A 210.152.137.196
 k2              IN A 210.152.137.195
 3bee            IN A 210.152.137.210
+vrgw            IN A 210.152.137.111
