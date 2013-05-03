@@ -1,10 +1,10 @@
-$TTL 900
+$TTL 300
 @ IN SOA 1mg.org. root.1mg.org. (
-    2013050300 ; Serial
-    900 ; Refresh
-    450 ; Retry
+    2013050301 ; Serial
+    300 ; Refresh
+    600 ; Retry
     43200 ; Expire
-    900 ) ; Minimum
+    300 ) ; Minimum
 
 ;NS
 @               IN NS NS1.MAIHAMA-NET.COM.
