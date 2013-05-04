@@ -1,8 +1,8 @@
-file_cache_path.expand_path("../cache", __FILE__)
+file_cache_path "/var/chef/cache"
 
 cookbook_path [
-  File.expand_path('../site-cookbooks',__FILE__),
-  File.expand_path('../cookbooks',__FILE)
+  "/var/chef/site-cookbooks",
+  "/var/chef/cookbooks'
 ]
 
-role_path File.expand_path("../roles",__FILE__)
+role_path "/var/chef/roles"
