@@ -8,8 +8,8 @@
 #
 package 'nginx' do
   action :install
-  if node['nginx']['repo_source'] != nil
-    options "--enablerepo=#{node.nginx.repo_source}"
+  if node['nginx']['options']
+    options node['nginx']['options']
   end
 end
 

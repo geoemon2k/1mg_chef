@@ -5,7 +5,7 @@ when 'centos'
   default['nginx']['user'] = 'nginx'
   default['nginx']['group'] = 'nginx'
   default['nginx']['include_dir'] = 'conf.d/'
-  default['nginx']['repo_source'] = 'epel'
+  default['nginx']['options'] = '--enablerepo=epel'
 end
 
 default['nginx']['conf_list'] = ['server.1mg.org.conf', 'www.1mg.org.conf']
