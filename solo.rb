@@ -6,3 +6,4 @@ cookbook_path [
 ]
 
 role_path "/var/chef/roles"
+
