@@ -1,20 +1,12 @@
-gpg_keyname = "RPM-GPG-KEY-EPEL-#{node[:platform_version].to_i}"
-if node[:platform_version].to_i > 5
-  url = "http://ftp.iij.ad.jp/pub/linux/fedora/epel/#{node['platform_version'].to_i}/#{node['kernel']['machine']}/epel-release-6-8.noarch.rpm"
-else
-  url = "http://ftp.iij.ad.jp/pub/linux/fedora/epel/#{node['platform_version'].to_i}/#{node['kernel']['machine']}/epel-release-5-4.noarch.rpm"
-end
-
-
 execute "install_epel_gpg-key" do
   action :run
-  command "rpm --import http://ftp.iij.ad.jp/pub/linux/fedora/epel/#{gpg_keyname}"
-  not_if "ls /etc/pki/rpm-gpg/#{gpg_keyname}"
+  command "rpm --import http://ftp.iij.ad.jp/pub/linux/fedora/epel/"+node['epel']['gpg_keyname']
+  not_if "ls /etc/pki/rpm-gpg/"+node['epel']['gpg_keyname']
 end
 
 execute "install_epel_repo" do
   action :run
-  command "rpm --install #{url}"
+  command "rpm --install "+node['epel']['url']
   not_if 'rpm -q epel-release'
 
 end
