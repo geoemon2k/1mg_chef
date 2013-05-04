@@ -1,6 +1,6 @@
 {
   "json_class" : "Chef::Role",
-  "name": "1mg.org",
+  "name": "1mg",
   "run_list": [
     "recipe[1mg::stop_service]",
     "recipe[yum::epel]",
@@ -9,7 +9,7 @@
     "recipe[sshd::default]",
     "recipe[nsd::default]",
     "recipe[nginx::default]",
-    "recipe[mysql::server]",A
+    "recipe[mysql::server]",
     "recipe[php::default]",
     "recipe[php::php_mbstring]",
     "recipe[php::php_mcrypt]",
@@ -19,7 +19,7 @@
     "recipe[iptables::default]",
     "recipe[1mg::default]"
   ],
-  default_attributes : {
+  "default_attributes" : {
     "spawnfcgi": {
       "owner" : "nginx",
       "group" : "nginx",
@@ -61,6 +61,6 @@
       }
     }
   },
-  over_attributes : {
+  "over_attributes" : {
   }
 }
