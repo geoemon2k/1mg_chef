@@ -1,7 +1,7 @@
 execute "install-rpmforge-key" do
   action :run
   command "rpm --import #{node['yum']['rpmforge']['gpg_url']}"
-  not_if 'ls /etc/pki/rpm-gpg/#{node['yum']['rpmforge']['gpg']}'
+  not_if "ls /etc/pki/rpm-gpg/#{node['yum']['rpmforge']['gpg_keyname']}"
 end
 
 execute "install-rpmforge" do
