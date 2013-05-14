@@ -9,7 +9,7 @@ template  node['monit']['etc']+'monit.conf' do
   source 'monit.conf.erb'
   owner 'root'
   group 'root'
-  mode '0644'
+  mode '0700'
   notifies :restart, 'service[monit]'
 end
 
