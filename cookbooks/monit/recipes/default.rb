@@ -11,7 +11,6 @@ template  node['monit']['etc']+'monit.conf' do
   group 'root'
   mode '0644'
   notifies :restart, 'service[monit]'
-  end
 end
 
 service 'monit' do
