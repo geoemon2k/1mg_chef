@@ -13,13 +13,13 @@ end
 if node['yum']['rpmforge']['disabled']
   execute "disable-rpmforge" do
     action :run
-    command "sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/rpmforge"
-    only_if "grep 'enabled=1' /etc/yum.repos.d/rpmforge"
+    command "sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/rpmforge.repo"
+    only_if "grep 'enabled=1' /etc/yum.repos.d/rpmforge.repo"
   end
 else
   execute "enable-rpmforge" do
     action :run
-    command "sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/remi"
-    only_if "grep 'enabled=0' /etc/yum.repos.d/remi"
+    command "sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/rpmforge.repo"
+    only_if "grep 'enabled=0' /etc/yum.repos.d/rpmforge.repo"
   end
 end

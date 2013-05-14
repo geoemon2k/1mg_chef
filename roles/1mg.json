@@ -32,6 +32,9 @@
       },
       "epel" : {
         "disabled" : true
+      },
+      "rpmforge" : {
+        "disabled" : true
       }
     },
     "sshd" : {
