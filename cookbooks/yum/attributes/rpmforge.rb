@@ -9,6 +9,6 @@ else
   default['epel']['os_type'] = "x86_64"
 end
 default['yum']['rpmforge']['url'] = "http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el#{node[:platform_version].to_i}.rf.#{default['epel']['os_type']}.rpm"
-default['yum']['rpmforge']['gpg_keyname'] = "RPM-GPG-KEY.dag.txt"
-default['yum']['rpmforge']['gpg_url'] = "http://apt.sw.be/#{node['yum']['rpmforge']['gpg_keyname']}"
+default['yum']['rpmforge']['gpg_keyname'] = "RPM-GPG-KEY-rpmforge-dag"
+default['yum']['rpmforge']['gpg_url'] = "http://apt.sw.be/RPM-GPG-KEY.dag.txt"
 default['yum']['rpmforge']['disabled'] = false

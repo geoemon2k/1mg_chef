@@ -18,6 +18,7 @@
     "recipe[php::module_pecl_apc]",
     "recipe[spawn-fcgi::default]",
     "recipe[iptables::default]",
+    "recipe[monit::default]",
     "recipe[1mg::default]"
   ],
   "default_attributes" : {
