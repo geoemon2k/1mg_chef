@@ -1,12 +1,12 @@
 execute "install_epel_gpg-key" do
   action :run
   command "rpm --import http://ftp.iij.ad.jp/pub/linux/fedora/epel/"+node['epel']['gpg_keyname']
-  not_if "ls /etc/pki/rpm-gpg/"+node['epel']['gpg_keyname']
+  not_if "ls /etc/pki/rpm-gpg/"+node['yum']['epel']['gpg_keyname']
 end
 
 execute "install_epel_repo" do
   action :run
-  command "rpm --install "+node['epel']['url']
+  command "rpm --install "+node['yum']['epel']['url']
   not_if 'rpm -q epel-release'
 
 end

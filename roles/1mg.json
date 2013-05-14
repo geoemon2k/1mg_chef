@@ -5,6 +5,7 @@
     "recipe[1mg::stop_service]",
     "recipe[yum::epel]",
     "recipe[yum::remi]",
+    "recipe[yum::rpmforge]",
     "recipe[sendmail::default]",
     "recipe[sshd::default]",
     "recipe[nsd::default]",
