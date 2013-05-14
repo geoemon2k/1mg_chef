@@ -17,4 +17,3 @@ service 'monit' do
   action [:enable, :start]
   supports :restart => true, :status => true
 end
-  
