@@ -59,7 +59,3 @@ cron "Set_Pull_from_Github" do
 end
 
 
-gem_package "knife-solo" do
-  action :install
-  gem_binary "/opt/chef/embedded/bin/gem"
-end
