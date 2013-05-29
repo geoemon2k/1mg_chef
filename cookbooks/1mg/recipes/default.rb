@@ -14,6 +14,7 @@ directory '/root/.ssh' do
   recursive true
 end
 
+
 cookbook_file '/root/.ssh/authorized_keys' do
   source "pub.key"
   owner 'root'
@@ -21,11 +22,13 @@ cookbook_file '/root/.ssh/authorized_keys' do
   mode '0400'
 end
 
+
 execute 'add_hostname' do
   action :run
   command "echo 'HOSTNAME="+node['fqdn']+"' >> /etc/sysconfig/network"
   not_if "egrep '^HOSTNAME="+node['fqdn']+"' /etc/sysconfig/network"
 end
+
 
 execute 'set_root' do
   action :run
@@ -34,10 +37,12 @@ execute 'set_root' do
   notifies :run, 'execute[newaliases]'
 end
 
+
 execute 'newaliases' do
   action :nothing
   command 'newaliases'
 end
+
 
 cookbook_file '/var/chef/.git/hooks/post-merge' do
   source 'post-merge'
@@ -46,8 +51,15 @@ cookbook_file '/var/chef/.git/hooks/post-merge' do
   mode 0755
 end
 
+
 cron "Set_Pull_from_Github" do
   action :create
   user 'root'
   command "cd /var/chef/;git pull > /dev/null 2>&1"
+end
+
+
+gem_package "knife-solo" do
+  action :install
+  gem_binary "/opt/chef/embedded/bin/gem"
 end
