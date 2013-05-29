@@ -37,7 +37,8 @@
       "conf_lists" : {
         "PermitRootLogin" : "yes",
         "ChallengeResponseAuthentication" : "no",
-        "IgnoreUserKnownHosts" : "yes"
+        "IgnoreUserKnownHosts" : "yes",
+        "ClientAliveInterval" : "48"
       }
     },
     "nsd" : {
