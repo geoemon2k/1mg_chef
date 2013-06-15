@@ -1,6 +1,6 @@
 $TTL 300
 @ IN SOA 1mg.org. root.1mg.org. (
-    2013051100 ; Serial
+    2013061600 ; Serial
     300 ; Refresh
     600 ; Retry
     43200 ; Expire
@@ -19,11 +19,12 @@ _spf            IN TXT "v=spf1 +ip4:210.172.144.0/24 183.76.0.0/16 ~all"
 
 ;VPS
 @               IN A 183.181.14.200
-www             IN A 183.181.14.200
+www             IN CNAME @
 www				IN AAAA 2001:2e8:624:0:2:1:0:cc
-server          IN A 183.181.14.200
+server          IN CNAME @
 server          IN AAAA 2001:2e8:624:0:2:1:0:cc
 dev.www         IN A 210.152.137.228
-gitlab          IN A 210.152.137.101
+dev.server      IN CNAME dev.www
+chef            IN A 210.152.137.236
 ;DLV DNSSEC
 ;dlv.1mg.org. 0 IN TXT "DLV:1:szleruhnshoo"
