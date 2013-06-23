@@ -1,6 +1,6 @@
 $TTL 120
 @ IN SOA 1mg.biz. root.1mg.biz. (
-    2013050401 ; Serial
+    20130062300 ; Serial
     300 ; Refresh
     600 ; Retry
     43200; Expire
@@ -20,3 +20,4 @@ sm              IN A 210.152.137.208
 3bee            IN A 210.152.137.210
 vrgw            IN A 210.152.137.30
 lxc             IN A 210.152.137.163
+repository      IN A 210.152.137.59
