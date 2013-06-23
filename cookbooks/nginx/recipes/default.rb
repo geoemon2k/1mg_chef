@@ -37,7 +37,7 @@ template node['nginx']['dir']+node['nginx']['include_dir']+"server.1mg.org.conf"
 end
 
 template node['nginx']['dir']+node['nginx']['include_dir']+"www.1mg.org.conf" do
-  source "server.1mg.org.conf.erb"
+  source "www.1mg.org.conf.erb"
   owner node['nginx']['user']
   group node['nginx']['group']
   mode  0644
