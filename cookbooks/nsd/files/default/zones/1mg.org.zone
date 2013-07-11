@@ -1,6 +1,6 @@
 $TTL 300
 @ IN SOA 1mg.org. root.1mg.org. (
-    2013061600 ; Serial
+    2013071100 ; Serial
     300 ; Refresh
     600 ; Retry
     43200 ; Expire
@@ -26,5 +26,6 @@ server          IN AAAA 2001:2e8:624:0:2:1:0:cc
 dev.www         IN A 210.152.137.228
 dev.server      IN CNAME dev.www
 chef            IN A 210.152.137.236
+gitlab          IN A 210.152.137.101
 ;DLV DNSSEC
 ;dlv.1mg.org. 0 IN TXT "DLV:1:szleruhnshoo"
