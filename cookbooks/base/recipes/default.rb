@@ -32,8 +32,8 @@ end
 
 execute 'set_root' do
   action :run
-  command "echo 'root: "+node['1mg']['root_address']+"' >> /etc/aliases"
-  not_if "egrep '^root: "+node['1mg']['root_address']+"' /etc/aliases"
+  command "echo 'root: "+node['base']['root_address']+"' >> /etc/aliases"
+  not_if "egrep '^root: "+node['base']['root_address']+"' /etc/aliases"
   notifies :run, 'execute[newaliases]'
 end
 
