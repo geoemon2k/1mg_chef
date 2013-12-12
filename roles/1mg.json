@@ -2,7 +2,7 @@
   "json_class" : "Chef::Role",
   "name": "1mg",
   "run_list": [
-    "recipe[1mg::stop_service]",
+    "recipe[base::stop_service]",
     "recipe[yum::epel]",
     "recipe[yum::remi]",
     "recipe[sendmail::default]",
@@ -17,8 +17,8 @@
     "recipe[php::module_pecl_apc]",
     "recipe[spawn-fcgi::default]",
     "recipe[iptables::default]",
-    "recipe[1mg::gem]",
-    "recipe[1mg::default]"
+    "recipe[base::gem]",
+    "recipe[base::default]"
   ],
   "default_attributes" : {
     "spawnfcgi": {
