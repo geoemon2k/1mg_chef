@@ -26,14 +26,6 @@
       "group" : "nginx",
       "num" : "5"
     },
-    "yum" : {
-      "remi" : {
-        "disabled" : true
-      },
-      "epel" : {
-        "disabled" : true
-      }
-    },
     "sshd" : {
       "conf_lists" : {
         "PermitRootLogin" : "yes",

@@ -11,4 +11,4 @@ else
 end
 
 default['yum']['epel']['gpg_keyname'] = "RPM-GPG-KEY-EPEL-#{node[:platform_version].to_i}"
-default['yum']['epel']['disabled'] = false
+default['yum']['epel']['disabled'] = true

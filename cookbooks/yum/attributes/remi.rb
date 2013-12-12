@@ -1,1 +1,1 @@
-default['yum']['remi']['disabled'] = false
+default['yum']['remi']['disabled'] = true
