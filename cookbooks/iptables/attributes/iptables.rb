@@ -8,5 +8,5 @@ node.default['iptables']['port'] = {
 
 case node[:platform]
 when 'centos'
-  default['iptables']['etc'] = node['base']['sysconfig_path']
+  default['iptables']['etc'] = node['base']['sysconfig']
 end
