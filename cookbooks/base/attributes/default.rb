@@ -4,7 +4,7 @@ default['base']['etc'] = '/etc'
 
 case node[:platform]
 when 'centos', 'fedora'
-  default['base']['sysconfig_path'] = '/etc/sysconfig'
+  default['base']['sysconfig'] = '/etc/sysconfig'
   default['base']['off_services'] = Array.new
   default['base']['on_services'] = Array.new
 end
