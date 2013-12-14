@@ -73,6 +73,14 @@
     "nginx" : {
       "conf_lists" : ["server.1mg.org.conf", "www.1mg.org.conf"]
     },
+    "php": {
+      "sub_packages": [
+        {"pkg_name": "php-mbstring"},
+        {"pkg_name": "php-mbcrypt", "pkg_option": "--enablerepo=epel"},
+        {"pkg_name": "php-mysql"},
+        {"pkg_name": "php-pecl-apc"},
+      ]
+    },
     "mysqld" : {
       "conf_options" : {
         "datadir" : "/usr/local/1mg/var/lib/mysql/"
