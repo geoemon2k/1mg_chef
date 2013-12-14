@@ -2,10 +2,8 @@ package "iptables" do
   action :install
 end
 
-case node[:platform]
-  when 'centos'
-  template '/etc/sysconfig/iptables' do
-  source 'iptables/iptables.erb'
+template node['iptables']['etc'] + '/iptables' do
+  source 'iptables.erb'
   owner 'root'
   group 'root'
   mode '0644'
@@ -13,7 +11,6 @@ case node[:platform]
     :iptables => node[:iptables]
   })
   notifies :restart, 'service[iptables]'
-  end
 end
 
 service 'iptables' do

@@ -5,15 +5,15 @@ package node['mysqld']['package'] do
   end
 end
 
-template '/etc/my.cnf' do
+template node['base']['etc'] + '/my.cnf' do
   source 'my.cnf.erb'
   owner 'root'
   group 'root'
   mode '0644'
-  notifies :restart, 'service[mysqld]'
+  notifies :restart, 'service[' + node['mysqld']['service'] + ']'
 end
 
-service 'mysqld' do
+service node['mysqld']['service'] do
   action [:enable, :start]
   supports :status => true, :restart => true
 end

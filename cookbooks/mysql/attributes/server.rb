@@ -5,13 +5,13 @@ case node[:platform]
 when 'centos', 'ubuntu'
 end
  
-default['mysqld']['dir'] = '/etc/'
-default['mysqld']['data_dir'] = '/var/lib/mysql/'
-default['mysqld']['lib_dir'] = '/var/lib/mysql/'
+default['mysqld']['etc'] = '/etc'
+default['mysqld']['data'] = '/var/lib/mysql'
+default['mysqld']['lib'] = '/var/lib/mysql'
 default['mysqld']['conf_options'] = {
-  'socket' => "#{default['mysqld']['lib_dir']}mysql.sock",
+  'socket' => node['mysqld']['lib'] + "/mysql.sock",
   'user' => 'mysql',
-  'datadir' => default['mysqld']['lib_dir'],
+  'datadir' => node['mysqld']['lib'],
   'bind-address' => '127.0.0.1',
   'key_buffer_size' => '8K',
   'max_allowed_packet' => '1M',
