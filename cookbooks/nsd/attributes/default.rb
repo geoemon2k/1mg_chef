@@ -1,4 +1,4 @@
-default['nsd']['dir'] = '/etc/nsd'
+default['nsd']['etc'] = '/etc/nsd'
 default['nsd']['pkg_name'] = 'nsd'
 default['nsd']['service'] = 'nsd'
 default['nsd']['user'] = 'nsd'
