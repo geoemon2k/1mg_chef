@@ -6,24 +6,26 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-package 'spawn-fcgi' do
+package node['spawnfcgi']['pkg_name'] do
   action :install
-  options '--enablerepo=epel'
+  if node['spawnfcgi']['pkg_options'] != nil
+    options node['spawnfcgi']['pkg_options']
+  end
 end
 
-template '/etc/sysconfig/spawn-fcgi' do
+template node['base']['sysconfig'] + '/spawn-fcgi' do
   source 'sysconfig.spawn-fcgi.erb'
   owner 'root'
   group 'root'
   mode 0644
-  notifies :restart, 'service[spawn-fcgi]'
+  notifies :restart, 'service[' + node['spawnfcgi']['service'] + ']'
 end
 
 execute 'chown-libdirectory' do
-  command "chown -R #{node.spawnfcgi.owner}:#{node.spawnfcgi.group} /var/lib/php"
+  command "chown -R " + node['spawnfcgi']['owner'] + ':' + node['spawnfcgi']['group'] + " /var/lib/php"
   only_if "ls /var/lib/php"
 end
 
-service 'spawn-fcgi' do
+service node['spawnfcgi']['service'] do
   action [:enable, :start]
 end
