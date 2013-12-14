@@ -72,7 +72,7 @@
     "php": {
       "sub_packages": [
         {"pkg_name": "php-mbstring"},
-        {"pkg_name": "php-mbcrypt", "pkg_option": "--enablerepo=epel"},
+        {"pkg_name": "php-mcrypt", "pkg_option": "--enablerepo=epel"},
         {"pkg_name": "php-mysql"},
         {"pkg_name": "php-pecl-apc"}
       ]
