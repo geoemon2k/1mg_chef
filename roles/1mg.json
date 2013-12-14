@@ -21,6 +21,30 @@
     "recipe[base::default]"
   ],
   "default_attributes" : {
+    "base": {
+      "on_services": [
+      "crond",
+      "modules_dep",
+      "network",
+      "portreserve",
+      "rsyslog"
+      ],
+      "off_services": [
+        "saslauthd",
+        "xinetd",
+        "smadmd",
+        "serversman",
+        "httpd",
+        "ajaxterm",
+        "netfs",
+        "rpcbind",
+        "ip6tables",
+        "lvm2-monitor",
+        "messagebus",
+        "udev-post",
+        "netconsole"
+      ]
+    },
     "spawnfcgi": {
       "owner" : "nginx",
       "group" : "nginx",

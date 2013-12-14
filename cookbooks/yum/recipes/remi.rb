@@ -1,3 +1,11 @@
+#
+# Cookbook Name:: yum
+# Recipe:: remi
+#
+# Copyright 2013, YOUR_COMPANY_NAME
+#
+# All rights reserved - Do Not Redistribute
+#
 execute "install-remi-key" do
   action :run
   command "rpm --import http://rpms.famillecollet.com/RPM-GPG-KEY-remi"
