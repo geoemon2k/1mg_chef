@@ -10,12 +10,8 @@
     "recipe[nsd::default]",
     "recipe[nginx::default]",
     "recipe[mysql::server]",
-    "recipe[php::default]",
-    "recipe[php::php_mbstring]",
-    "recipe[php::php_mcrypt]",
-    "recipe[php::php_mysql]",
-    "recipe[php::module_pecl_apc]",
     "recipe[spawn-fcgi::default]",
+    "recipe[php::default]",
     "recipe[iptables::default]",
     "recipe[base::gem]",
     "recipe[base::default]"
@@ -78,7 +74,7 @@
         {"pkg_name": "php-mbstring"},
         {"pkg_name": "php-mbcrypt", "pkg_option": "--enablerepo=epel"},
         {"pkg_name": "php-mysql"},
-        {"pkg_name": "php-pecl-apc"},
+        {"pkg_name": "php-pecl-apc"}
       ]
     },
     "mysqld" : {
