@@ -6,19 +6,19 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-package node['ntp']['package_name'] do
+package node['ntp']['pkg_name'] do
   action :install
 end
 
-service node['ntp']['service_name'] do
+service node['ntp']['service'] do
   action [:enable,:start]
   supports :status => true, :restart => true
 end
 
-template node['ntp']['etc']+"ntp.conf" do
+template node['ntp']['etc'] + "/ntp.conf" do
   source "ntp.conf.erb"
   owner "root"
   group "root"
   mode 0644
-  notifies :restart, "service[#{node['ntp']['service_name']}]"
+  notifies :restart, "service[" + node['ntp']['service'] + "]"
 end
