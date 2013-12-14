@@ -1,11 +1,13 @@
-default['nginx']['etc'] = '/etc/nginx'
-  
+default['nginx']['pkg_name'] = 'nginx'
+default['nginx']['service'] = 'nginx'
+default['nginx']['user'] = 'nginx'
+default['nginx']['group'] = 'nginx'
+default['nginx']['etc'] = node['base']['etc'] + '/nginx'
+default['nginx']['include_dir'] = node['nginx']['etc'] + '/conf.d'
+default['nginx']['conf_list'] = Array.new
+
 case node[:platform]
 when 'centos'
-  default['nginx']['user'] = 'nginx'
-  default['nginx']['group'] = 'nginx'
-  default['nginx']['include_dir'] = 'conf.d/'
-  default['nginx']['options'] = '--enablerepo=epel'
+  default['nginx']['pkg_options'] = '--enablerepo=epel'
 end
 
-default['nginx']['conf_list'] = ['server.1mg.org.conf', 'www.1mg.org.conf']

@@ -6,10 +6,10 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-package 'nginx' do
+package node['nginx']['pkg_name'] do
   action :install
-  if node['nginx']['options']
-    options node['nginx']['options']
+  if node['nginx']['pkg_options']
+    options node['nginx']['pkg_options']
   end
 end
 
@@ -18,7 +18,7 @@ template node['nginx']['etc'] + "/nginx.conf" do
   owner node['nginx']['user']
   group node['nginx']['group']
   mode  0644
-  notifies :reload, 'service[nginx]'
+  notifies :reload, 'service[' + node['nginx']['service'] + ']'
 end
 
 directory node['nginx']['etc'] + "/conf.d" do
@@ -28,23 +28,20 @@ directory node['nginx']['etc'] + "/conf.d" do
   mode  0755
 end
 
-template node['nginx']['etc'] + '/' + node['nginx']['include_dir'] + "/server.1mg.org.conf" do
-  source "server.1mg.org.conf.erb"
-  owner node['nginx']['user']
-  group node['nginx']['group']
-  mode  0644
-  notifies :reload, 'service[nginx]'
+if node['nginx']['conf_lists'] != nil
+  node['nginx']['conf_lists'].each do |conf_name|
+
+    template node['nginx']['include_dir'] + "/" + conf_name + ".conf" do
+      source conf_name + ".conf.erb"
+      owner node['nginx']['user']
+      group node['nginx']['group']
+      mode  0644
+      notifies :reload, 'service[' + node['nginx']['service'] + ']'
+    end
+  end
 end
 
-template node['nginx']['etc'] + '/' + node['nginx']['include_dir'] + "/www.1mg.org.conf" do
-  source "www.1mg.org.conf.erb"
-  owner node['nginx']['user']
-  group node['nginx']['group']
-  mode  0644
-  notifies :reload, 'service[nginx]'
-end
-
-service 'nginx' do
+service node['nginx']['service'] do
   action [:enable, :start]
   supports :status => true, :restart => true
 end
