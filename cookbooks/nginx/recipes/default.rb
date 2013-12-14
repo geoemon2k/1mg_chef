@@ -13,7 +13,7 @@ package 'nginx' do
   end
 end
 
-template node['nginx']['dir']+"nginx.conf" do
+template node['nginx']['etc'] + "/nginx.conf" do
   source "nginx.conf.erb"
   owner node['nginx']['user']
   group node['nginx']['group']
@@ -21,14 +21,14 @@ template node['nginx']['dir']+"nginx.conf" do
   notifies :reload, 'service[nginx]'
 end
 
-directory node['nginx']['dir']+"conf.d/" do
+directory node['nginx']['etc'] + "/conf.d" do
   action :create
   owner node['nginx']['user']
   group node['nginx']['group']
   mode  0755
 end
 
-template node['nginx']['dir']+node['nginx']['include_dir']+"server.1mg.org.conf" do
+template node['nginx']['etc'] + '/' + node['nginx']['include_dir'] + "/server.1mg.org.conf" do
   source "server.1mg.org.conf.erb"
   owner node['nginx']['user']
   group node['nginx']['group']
@@ -36,7 +36,7 @@ template node['nginx']['dir']+node['nginx']['include_dir']+"server.1mg.org.conf"
   notifies :reload, 'service[nginx]'
 end
 
-template node['nginx']['dir']+node['nginx']['include_dir']+"www.1mg.org.conf" do
+template node['nginx']['etc'] + '/' + node['nginx']['include_dir'] + "/www.1mg.org.conf" do
   source "www.1mg.org.conf.erb"
   owner node['nginx']['user']
   group node['nginx']['group']

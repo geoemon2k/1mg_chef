@@ -1,4 +1,4 @@
-default['nginx']['dir'] = '/etc/nginx/'
+default['nginx']['etc'] = '/etc/nginx'
   
 case node[:platform]
 when 'centos'
