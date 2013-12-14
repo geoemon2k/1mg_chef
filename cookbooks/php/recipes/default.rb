@@ -23,14 +23,14 @@ if node['php']['sub_packages'] != nil
       elsif key == 'option'
         pkg_option = value
       end
+    end
 
-      package pkg_name do
-        action :install
-        if pkg_option != nil
-          option pkg_option
-        end
-        notifies :restart, 'service[spawn-fcgi]'
+    package pkg_name do
+      action :install
+      if pkg_option != nil
+        option pkg_option
       end
+      notifies :restart, 'service[spawn-fcgi]'
     end
   end
 end
