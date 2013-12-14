@@ -1,22 +1,14 @@
-default['nsd']['dir'] = '/etc/nsd/'
-default['nsd']['package'] = 'nsd'
+default['nsd']['dir'] = '/etc/nsd'
+default['nsd']['pkg_name'] = 'nsd'
+default['nsd']['service'] = 'nsd'
 default['nsd']['user'] = 'nsd'
 default['nsd']['group'] = 'nsd'
-default['nsd']['zones_dir'] = 'zones/'
-
-case node[:platform]
-when 'centos'
-  default['nsd']['repo_source'] = 'epel'
-when 'ubuntu'
-  default['nsd']['dir'] = '/etc/nsd3/'
-  default['nsd']['package'] = 'nsd3'
-end
-
+default['nsd']['zones_dir'] = 'zones'
 default['nsd']['zone_list'] = nil
 case node[:platform]
-when "centos", "fedora"
-  default['nsd']['install_option'] = "--enablerepo=epel"
-else
-  default['nsd']['install_option'] = Array.new
+when 'centos'
+  default['nsd']['pkg_options'] = '--enablerepo=epel'
+when 'ubuntu'
+  default['nsd']['etc'] = '/etc/nsd3'
+  default['nsd']['pkg_name'] = 'nsd3'
 end
-

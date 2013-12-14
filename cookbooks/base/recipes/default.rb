@@ -25,15 +25,15 @@ end
 
 execute 'add_hostname' do
   action :run
-  command "echo 'HOSTNAME="+node['fqdn']+"' >> " + node['base']['sysconfig'] + "/network"
-  not_if "egrep '^HOSTNAME="+node['fqdn']+"' " + node['base']['sysconfig'] + "/network"
+  command "echo 'HOSTNAME=" + node['fqdn'] + "' >> " + node['base']['sysconfig'] + "/network"
+  not_if "egrep '^HOSTNAME=" + node['fqdn'] + "' " + node['base']['sysconfig'] + "/network"
 end
 
 
 execute 'set_root' do
   action :run
-  command "echo 'root: " + node['base']['root_address']+"' >> " + node['base']['etc'] + "aliases"
-  not_if "egrep '^root: " + node['base']['root_address']+"' " + node['base']['etc'] + "/aliases"
+  command "echo 'root: " + node['base']['root_address'] + "' >> " + node['base']['etc'] + "aliases"
+  not_if "egrep '^root: " + node['base']['root_address'] + "' " + node['base']['etc'] + "/aliases"
   notifies :run, 'execute[newaliases]'
 end
 
