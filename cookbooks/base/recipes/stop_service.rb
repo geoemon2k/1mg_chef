@@ -11,7 +11,7 @@ if node['base']['on_services']
   node['base']['off_services'].each do |name|
     service 'disable_service' do
       service_name name
-      action [:disable, :stop]
+      action [:disable]
     end
   end
 

@@ -25,16 +25,6 @@ if node['sshd']['conf_lists'] != nil
     end
   end
 end
-    # execute "replace_set_sshd_config_#{name}" do
-    #   command "sed -i -e \"s/^#{name} \.*/#{name} #{value}/g\" " + node['sshd']['sshd_config']
-    #   not_if "egrep '^#{name} #{value}' " + node['sshd']['sshd_config']
-    #   notifies :restart, "service[" + node['sshd']['service_name'] + "]"
-    # end
-    # execute "add_sshd_config_#{name}" do
-    #   command "echo '#{name} #{value}' >> " + ['sshd']['sshd_config']
-    #   not_if "egrep '^#{name} #{value}' " + ['sshd']['sshd_config']
-    #   notifies :restart, "service[" + node['sshd']['service_name'] + "]"
-    # end
 
 service node['sshd']['service_name'] do
   action [:enable, :start]
