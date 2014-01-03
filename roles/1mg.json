@@ -12,6 +12,7 @@
     "recipe[sshd::setup]",
     "recipe[nsd::setup]",
     "recipe[nsd::setup_zone]",
+    "recipe[jenkins::setup]",
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
     "recipe[nginx::setup]",
