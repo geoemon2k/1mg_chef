@@ -21,7 +21,7 @@ template node['base']['etc'] + '/my.cnf' do
   notifies :restart, 'service[' + node['mysqld']['service'] + ']'
 end
 
-directory node['mysqld']['data_dir'] do
+directory node['mysqld']['conf_lists']['datadir'] do
   owner node['mysqld']['owner']
   group node['mysqld']['group']
   mode "0755"
