@@ -10,7 +10,7 @@ end
 default['mysqld']['etc'] = '/etc'
 default['mysqld']['lib'] = '/var/lib/mysql'
 default['mysqld']['conf_lists'] = {
-  'data_dir' => '/var/lib/mysql',
+  'datadir' => '/var/lib/mysql',
   'socket' => node['mysqld']['lib'] + "/mysql.sock",
   'user' => 'mysql',
   'datadir' => node['mysqld']['lib'],
