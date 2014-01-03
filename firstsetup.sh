@@ -1,0 +1,1 @@
+curl https://raw.github.com/geoemon2k/1mg_chef/master/build.sh|/bin/bash

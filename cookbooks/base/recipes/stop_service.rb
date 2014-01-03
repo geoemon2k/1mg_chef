@@ -6,8 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-if node['base']['on_services']
-
+if node['base']['off_services']
   node['base']['off_services'].each do |name|
     service 'disable_service_' + name do
       service_name name
@@ -15,8 +14,10 @@ if node['base']['on_services']
       only_if "chkconfig " + name
     end
   end
+end
 
 
+if node['base']['on_services']
   node['base']['on_services'].each do |name|
     service 'enable_service_' + name do
       service_name name
