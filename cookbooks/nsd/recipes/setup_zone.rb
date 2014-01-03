@@ -25,9 +25,9 @@ directory node['nsd']['zones_dir'] do
 end
 
 if node['nsd']['zones'] != nil
-  node['nsd']['zones'].each_pair do |zone_name, value|
-    cookbook_file node['nsd']['zones_dir'] + "/" + zone_name + ".zone" do
-      source "zones/" + zone_name + ".zone"
+  node['nsd']['zones'].each do |zone_info|
+    cookbook_file node['nsd']['zones_dir'] + "/" + zone_info['zone_name'] + ".zone" do
+      source "zones/" + zone_info['zone_name'] + ".zone"
       owner "root"
       group "root"
       mode '0644'
