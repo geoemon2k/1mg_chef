@@ -1,10 +1,9 @@
 default['nsd']['etc'] = '/etc/nsd'
 default['nsd']['pkg_name'] = 'nsd'
 default['nsd']['service'] = 'nsd'
-default['nsd']['user'] = 'nsd'
-default['nsd']['group'] = 'nsd'
-default['nsd']['zones_dir'] = 'zones'
-default['nsd']['zone_list'] = nil
+default['nsd']['zones_dir_name'] = 'zones'
+default['nsd']['zones_dir'] = ['nsd']['etc'] + '/' + node['nsd']['zones_dir_name']
+default['nsd']['zones'] = Hash.new
 case node[:platform]
 when 'centos'
   default['nsd']['pkg_options'] = '--enablerepo=epel'

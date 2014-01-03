@@ -1,10 +1,11 @@
-<% if @zone_lists -%>
-<% @zone_lists.each_pair do |key, value| -%>
+<% if @zones != nil %>
+<%   @zones.each do |zone_info| -%>
 zone:
-  name: <%= key %>
-  zonefile: <%= value.zonefile %>
-  <% value.xfr.each do |value2| -%>
-  provide-xfr: <%= value2 %> NOKEY
-  <% end -%>
-<% end -%>
+  name: <%= zone_info['zone_name'] %>
+  zonefile: /<%= node['nsd']['zones_dir_name'] + '/' + zone_info['zone_name'] %>.zone
+<%     if zone_info['xfr'] != nil %>
+<%       zone_info['xfr'].each do |xfr| -%>
+  provide-xfr: <%= xfr %> NOKEY
+<%     end -%>
+<%   end -%>
 <% end -%>
