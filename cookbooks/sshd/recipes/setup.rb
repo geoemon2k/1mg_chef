@@ -10,7 +10,7 @@ package node['sshd']['pkg_name'] do
   action :install
 end
 
-template node['sshd']['sshd_conf'] do
+template node['sshd']['sshd_config'] do
   source "sshd_config.erb"
   owner "root"
   group "root"
