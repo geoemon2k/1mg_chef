@@ -2,6 +2,9 @@
   "json_class" : "Chef::Role",
   "name": "1mg",
   "run_list": [
+    "recipe[base::setup_hostname]",
+    "recipe[base::setup_aliases]",
+    "recipe[base::setup_root_user]",
     "recipe[base::stop_service]",
     "recipe[yum::epel]",
     "recipe[yum::remi]",
@@ -12,12 +15,13 @@
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
     "recipe[nginx::setup]",
-    "recipe[iptables::default]",
-    "recipe[base::gem]",
-    "recipe[base::default]"
+    "recipe[iptables::setup]",
+    "recipe[base::setup_cucumber]"
   ],
   "default_attributes" : {
     "base": {
+      "hostname": "server.1mg.org",
+      "root_address": "keiji.ue@gmail.com",
       "on_services": [
       "crond",
       "modules_dep",
@@ -74,7 +78,7 @@
       }
     },
     "mysqld" : {
-      "conf_options" : {
+      "conf_lists" : {
         "datadir" : "/usr/local/1mg/var/lib/mysql/"
       }
     }

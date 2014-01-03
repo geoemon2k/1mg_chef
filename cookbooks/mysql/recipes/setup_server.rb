@@ -21,6 +21,13 @@ template node['base']['etc'] + '/my.cnf' do
   notifies :restart, 'service[' + node['mysqld']['service'] + ']'
 end
 
+directory node['mysqld']['data_dir'] do
+  owner node['mysqld']['owner']
+  group node['mysqld']['group']
+  mode "0755"
+  action :create
+end
+
 service node['mysqld']['service'] do
   action [:enable, :start]
   supports :status => true, :restart => true

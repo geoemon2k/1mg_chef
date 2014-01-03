@@ -1,14 +1,16 @@
 default['mysqld']['package'] = 'mysql-server'
 default['mysqld']['service'] = 'mysqld'
+default['mysqld']['owner'] = 'mysql'
+default['mysqld']['group'] = 'mysql'
 
 case node[:platform]
 when 'centos', 'ubuntu'
 end
  
 default['mysqld']['etc'] = '/etc'
-default['mysqld']['data'] = '/var/lib/mysql'
 default['mysqld']['lib'] = '/var/lib/mysql'
-default['mysqld']['conf_options'] = {
+default['mysqld']['conf_lists'] = {
+  'data_dir' => '/var/lib/mysql',
   'socket' => node['mysqld']['lib'] + "/mysql.sock",
   'user' => 'mysql',
   'datadir' => node['mysqld']['lib'],

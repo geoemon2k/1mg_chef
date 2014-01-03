@@ -1,6 +1,7 @@
 default['base']['stop_services'] = Array.new
-default['base']['root_address'] = 'keiji.ue@gmail.com'
+default['base']['root_address'] = 'root@localhost'
 default['base']['etc'] = '/etc'
+default['base']['hostname'] = 'localhost'
 
 case node[:platform]
 when 'centos', 'fedora'
