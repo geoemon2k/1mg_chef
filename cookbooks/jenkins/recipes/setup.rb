@@ -28,15 +28,15 @@ package "jenkins" do
   options '--enablerepo=jenkins'
 end
 
+template node['base']['etc'] + '/sysconfig/jenkins' do
+  source "sysconfig_jenkins.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :restart, "service[jenkins]"
+end
+
 service "jenkins" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
 end
-
-#template node['base']['etc'] + '/sysconfig/jenkins' do
-#  source "sysconfig_jenkins.erb"
-#  owner "root"
-#  group "root"
-#  mode "0644"
-#end
-

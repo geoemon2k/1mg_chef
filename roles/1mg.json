@@ -54,6 +54,11 @@
         "ClientAliveInterval" : "48"
       }
     },
+    "jenkins" : {
+      "listen" : "127.0.0.1",
+      "ajp_port" : "-1",
+      "args" : "--prefix=/jenkins"
+    },
     "nsd" : {
       "zones" : [{
         "zone_name" : "1mg.org",

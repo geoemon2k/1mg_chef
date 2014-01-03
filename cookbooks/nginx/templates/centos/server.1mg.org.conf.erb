@@ -34,8 +34,8 @@ server {
     
         expires 1d;
     }
-
-    location = /status {
-        stub_status on;
+    
+    location /jenkins {
+        proxy_pass http://localhost:8080;
     }
 }
