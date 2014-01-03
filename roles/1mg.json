@@ -13,6 +13,7 @@
     "recipe[nsd::setup]",
     "recipe[nsd::setup_zone]",
     "recipe[jenkins::setup]",
+    "recipe[jenkins::setup_plugins]",
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
     "recipe[nginx::setup]",
@@ -57,7 +58,8 @@
     "jenkins" : {
       "listen" : "127.0.0.1",
       "ajp_port" : "-1",
-      "args" : "--prefix=/jenkins"
+      "args" : "--prefix=/jenkins",
+      "plugins" : ["git"]
     },
     "nsd" : {
       "zones" : [{
