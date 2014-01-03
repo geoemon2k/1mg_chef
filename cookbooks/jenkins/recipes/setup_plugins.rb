@@ -17,6 +17,7 @@ if node['jenkins']['plugins'] != nil
 		execute "plugins_" + plugin do
       command "java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:80/jenkins install-plugin " + plugin
       action :run
+      notifies :restart, "service[jenkins]"
     end
   end
 end    
