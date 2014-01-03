@@ -17,6 +17,10 @@ cookbook_file node['nginx']['include_dir'] + '/default.conf' do
    action :delete
 end
 
+cookbook_file node['nginx']['include_dir'] + '/virtual.conf' do
+   action :delete
+end
+
 cookbook_file node['nginx']['include_dir'] + '/ssl.conf' do
    action :delete
 end
