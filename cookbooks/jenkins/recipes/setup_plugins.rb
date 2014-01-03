@@ -9,7 +9,7 @@
 execute "set_cli" do
 	command "wget -O /var/lib/jenkins/jenkins-cli.jar http://localhost:80/jenkins/jnlpJars/jenkins-cli.jar"
 	action :run
-	only_if do File.exists?("/var/lib/jenkins/jenkins-cli.jar") end
+	not_if do File.exists?("/var/lib/jenkins/jenkins-cli.jar") end
 end
 
 if node['jenkins']['plugins'] != nil
