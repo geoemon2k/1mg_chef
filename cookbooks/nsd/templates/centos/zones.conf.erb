@@ -2,7 +2,7 @@
 <%   @zones.each do |zone_info| %>
 zone:
   name: <%= zone_info['zone_name'] %>
-  zonefile: /<%= node['nsd']['zones_dir_name'] + '/' + zone_info['zone_name'] %>.zone
+  zonefile: <%= node['nsd']['zones_dir_name'] + '/' + zone_info['zone_name'] %>.zone
 <%     if zone_info['xfr'] != nil %>
 <%       zone_info['xfr'].each do |xfr| %>
   provide-xfr: <%= xfr %> NOKEY
