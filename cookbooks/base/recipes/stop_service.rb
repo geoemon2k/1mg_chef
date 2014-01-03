@@ -12,6 +12,7 @@ if node['base']['on_services']
     service 'disable_service_' + name do
       service_name name
       action :disable
+      only_if "chkconfig " + name
     end
   end
 
@@ -20,6 +21,7 @@ if node['base']['on_services']
     service 'enable_service_' + name do
       service_name name
       action :enable
+      only_if "chkconfig " + name
     end
   end
 

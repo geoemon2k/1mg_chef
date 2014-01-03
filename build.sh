@@ -1,10 +1,14 @@
-ln -sf /opt/chef/embedded/bin/* /usr/local/bin/
-yum install -y git gcc
-gem install cucumber rspec
-ln -sf /opt/chef/embedded/bin/* /usr/local/bin/
-mkdir -p /var/chef/cookbooks /tmp/chef-cache /var/chef/backups /etc/chef
-echo 'file_cache_path "/tmp/chef-cache"' >> /etc/chef/solo.rb
-echo 'cookbook_path "/var/chef/cookbooks"' >> /etc/chef/solo.rb
-echo 'file_backup_path "/var/chef/backups"' >> /etc/chef/solo.rb
-hostname server.1mg.org
-chef-solo -j /var/chef/cookbooks/1mg.json
+# git install
+yum install -y git
+
+# git clone
+mv /var/chef /var/chef.org
+git clone https://github.com/geoemon2k/1mg_chef.git /var/chef
+
+# chef install
+curl -L https://www.opscode.com/chef/install.sh | bash
+
+#gem install cucumber rspec
+#mkdir -p /var/chef/cookbooks /tmp/chef-cache /var/chef/backups /etc/chef
+#hostname server.1mg.org
+chef-solo -c /var/chef/solo.rb -o 'role[1mg]'
