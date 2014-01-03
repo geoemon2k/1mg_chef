@@ -18,6 +18,12 @@ template node['base']['etc'] + '/yum.repos.d/jenkins.repo' do
   notifies :restart, "service[jenkins]"
 end
 
+execute "set_jenkins-ci.org_key" do
+  command "rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key"
+  action :run
+  not_if "rpm -q jenkins-ci"
+end
+
 package "jenkins" do
   action :install
   options '--enablerepo=jenkins'
