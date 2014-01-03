@@ -11,7 +11,7 @@ if node['php']['packages'] != nil
     package pkg['pkg_name'] do
       action :install
       if pkg['pkg_option'] != nil
-        option pkg['pkg_option']
+        options pkg['pkg_option']
       end
       notifies :restart, 'service[' + node['php']['spawnfcgi']['service'] + ']'
     end
