@@ -31,7 +31,7 @@ end
 
 if node['nginx']['conf_lists'] != nil
   node['nginx']['conf_lists'].each do |conf_name|
-    template node['nginx']['include_dir'] + conf_name + ".conf" do
+    template node['nginx']['include_dir'] + '/' + conf_name + ".conf" do
       source conf_name + ".conf.erb"
       owner "root"
       group "root"
