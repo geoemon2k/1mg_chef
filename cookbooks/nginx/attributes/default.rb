@@ -1,7 +1,5 @@
 default['nginx']['pkg_name'] = 'nginx'
 default['nginx']['service'] = 'nginx'
-default['nginx']['user'] = 'nginx'
-default['nginx']['group'] = 'nginx'
 default['nginx']['etc'] = node['base']['etc'] + '/nginx'
 default['nginx']['include_dir'] = node['nginx']['etc'] + '/conf.d'
 default['nginx']['conf_list'] = Array.new

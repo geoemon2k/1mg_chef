@@ -1,3 +1,11 @@
+#
+# Cookbook Name:: mysql
+# Recipe:: setup_server
+#
+# Copyright 2013, YOUR_COMPANY_NAME
+#
+# All rights reserved - Do Not Redistribute
+#
 package node['mysqld']['package'] do
   action :install
   if node['mysqld']['install_option']

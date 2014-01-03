@@ -9,10 +9,9 @@
     "recipe[sshd::setup]",
     "recipe[nsd::setup]",
     "recipe[nsd::setup_zone]",
-    "recipe[nginx::default]",
-    "recipe[mysql::server]",
-    "recipe[spawn-fcgi::default]",
-    "recipe[php::default]",
+    "recipe[mysql::setup_server]",
+    "recipe[php::setup_with_spawnfcgi]",
+    "recipe[nginx::setup]",
     "recipe[iptables::default]",
     "recipe[base::gem]",
     "recipe[base::default]"
@@ -42,11 +41,6 @@
         "netconsole"
       ]
     },
-    "spawnfcgi": {
-      "owner" : "nginx",
-      "group" : "nginx",
-      "num" : "5"
-    },
     "sshd" : {
       "conf_lists" : {
         "PermitRootLogin" : "yes",
@@ -69,12 +63,15 @@
       "conf_lists" : ["server.1mg.org", "www.1mg.org"]
     },
     "php": {
-      "sub_packages": [
+      "packages": [
         {"pkg_name": "php-mbstring"},
         {"pkg_name": "php-mcrypt", "pkg_option": "--enablerepo=epel"},
         {"pkg_name": "php-mysql"},
         {"pkg_name": "php-pecl-apc"}
-      ]
+        ],
+      "spawnfcgi": {
+        "num": "5"
+      }
     },
     "mysqld" : {
       "conf_options" : {
