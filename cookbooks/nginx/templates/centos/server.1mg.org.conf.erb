@@ -31,12 +31,11 @@ server {
         deny all;
         auth_basic    "Need to Auth!!";
         auth_basic_user_file  "/usr/local/1mg/www/.htpasswd";
-    
+        proxy_set_header Authorization "";
         expires 1d;
     }
     
     location /jenkins {
         proxy_pass http://localhost:8080;
-        proxy_set_header Authorization "";
     }
 }
