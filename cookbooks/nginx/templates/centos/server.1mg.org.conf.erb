@@ -37,5 +37,6 @@ server {
     
     location /jenkins {
         proxy_pass http://localhost:8080;
+        proxy_set_header Authorization "";
     }
 }
