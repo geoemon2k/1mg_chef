@@ -17,6 +17,7 @@
     "recipe[jenkins::setup_plugins]",
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
+    "recipe[rails::setup]",
     "recipe[nginx::setup]",
     "recipe[iptables::setup]",
     "recipe[base::setup_cucumber]"
