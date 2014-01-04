@@ -5,6 +5,7 @@
     "recipe[base::setup_hostname]",
     "recipe[base::setup_aliases]",
     "recipe[base::setup_root_user]",
+    "recipe[base::setup_sudo]",
     "recipe[base::stop_service]",
     "recipe[yum::epel]",
     "recipe[yum::remi]",
