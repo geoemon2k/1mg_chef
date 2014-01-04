@@ -10,5 +10,5 @@ template "/etc/sudoers" do
   source "sudoers.erb"
   owner "root"
   group "root"
-  mode "0644"
+  mode "0440"
 end
