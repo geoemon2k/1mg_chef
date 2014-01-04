@@ -1,5 +1,9 @@
 # git install
-yum install -y git
+yum install -y git sudo
+
+#setup sudo
+echo 'jenkins ALL=(ALL)       NOPASSWD: /usr/bin/chef-solo' >> /etc/sudoers
+sed -i -e '/requiretty/d' /etc/sudoers
 
 # git clone
 mv /var/chef /var/chef.org
