@@ -7,6 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 execute "setup_ruby" do
-  command "rvm install " + node['ruby']['version']
+  command "/usr/local/rvm/bin/rvm install " + node['ruby']['version']
   action :run
 end
