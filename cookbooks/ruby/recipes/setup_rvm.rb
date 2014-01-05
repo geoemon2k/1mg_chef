@@ -19,6 +19,12 @@ end
 
 execute "set_env_path" do
   action :run
-  command "echo 'export PATH=/usr/local/rvm/bin/rvm:\$PATH' >> ~/.bashrc"
-  not_if "grep '/usr/local/rvm/bin/rvm' ~/.bashrc"
+  command "echo 'export PATH=\$PATH:/usr/local/rvm/bin' >> ~/.bashrc"
+  not_if "grep '/usr/local/rvm/bin' ~/.bashrc"
+  notifies :run, "execute[read_bashrc]"
+end
+
+execute "read_bashrc" do
+  command "source ~/.bashrc"
+  action :nothing
 end
