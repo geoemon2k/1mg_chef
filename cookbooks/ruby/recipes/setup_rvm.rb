@@ -16,3 +16,9 @@ execute 'setup_rvm' do
   action :run
   not_if "which rvm"
 end
+
+execute "set_env_path" do
+  action :run
+  command "echo 'export PATH=/usr/local/rvm/bin/rvm:\$PATH' >> ~/.bashrc"
+  not_if "grep '/usr/local/rvm/bin/rvm' ~/.bashrc"
+end

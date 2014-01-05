@@ -7,6 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 execute "setup_ruby" do
-  command "`which rvm` install " + node['ruby']['version']
+  command "rvm install " + node['ruby']['version']
   action :run
 end
