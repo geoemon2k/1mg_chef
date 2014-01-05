@@ -1,4 +1,4 @@
-%{'curl' 'curl-devel' 'gcc' 'gcc-c++' 'git' 'openssl-devel' 'httpd-devel' 'readline-devel' 'tk-devel' 'make' 'zlib-devel' 'libffi-devel'}.each do |pkg|
+['curl', 'curl-devel', 'gcc', 'gcc-c++', 'git', 'openssl-devel', 'httpd-devel', 'readline-devel', 'tk-devel', 'make', 'zlib-devel', 'libffi-devel'].each do |pkg|
   package pkg do
     action :install
     not_if "which rvm"
