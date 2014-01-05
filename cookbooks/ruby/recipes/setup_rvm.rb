@@ -13,6 +13,6 @@ end
 
 execute 'setup_rvm' do
   command "bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm ... -installer )"
-  action run
+  action :run
   not_if "which rvm"
 end
