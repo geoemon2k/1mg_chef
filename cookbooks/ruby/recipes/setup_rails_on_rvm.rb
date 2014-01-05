@@ -19,5 +19,6 @@ execute "change_gemset_rails" do
 end
 
 gem_package "rails" do
+  version node['ruby']['rails_version']
   action :install
 end
