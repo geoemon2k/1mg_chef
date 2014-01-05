@@ -12,7 +12,7 @@ package 'libyaml-devel' do
 end
 
 execute 'setup_rvm' do
-  command "bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )"
+  command "curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer|bash -s stable"
   action :run
   not_if "which rvm"
 end
