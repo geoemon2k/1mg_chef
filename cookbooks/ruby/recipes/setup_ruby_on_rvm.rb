@@ -8,6 +8,6 @@
 #
 execute "setup_ruby" do
   command "/usr/local/rvm/bin/rvm install " + node['ruby']['version']
-  not_if "/usr/local/rvm/bin/rvm list|egrep '^" + node['ruby']['version'] + "$'" 
+  not_if "/usr/local/rvm/bin/rvm list|egrep 'ruby-" + node['ruby']['version'] + "'" 
   action :run
 end
