@@ -17,8 +17,6 @@
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
     "recipe[ruby::setup_rvm]",
-    "recipe[ruby::setup_ruby_on_rvm]",
-    "recipe[ruby::setup_rails_on_rvm]",
     "recipe[nginx::setup]",
     "recipe[iptables::setup]",
     "recipe[base::setup_cucumber]"
