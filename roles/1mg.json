@@ -16,6 +16,7 @@
     "recipe[jenkins::setup_plugins]",
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
+    "recipe[redis::setup]",
     "recipe[ruby::setup_rvm]",
     "recipe[nginx::setup]",
     "recipe[iptables::setup]",
@@ -80,7 +81,8 @@
         {"pkg_name": "php-mbstring"},
         {"pkg_name": "php-mcrypt", "pkg_option": "--enablerepo=epel"},
         {"pkg_name": "php-mysql"},
-        {"pkg_name": "php-pecl-apc"}
+        {"pkg_name": "php-pecl-apc"},
+        {"pkg_name": "php-redis", "pkg_option": "--enablerepo=epel"}
         ],
       "spawnfcgi": {
         "num": "5"
