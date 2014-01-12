@@ -16,6 +16,7 @@
     "recipe[jenkins::setup_plugins]",
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
+    "recipe[redis::setup]",
     "recipe[ruby::setup_rvm]",
     "recipe[nginx::setup]",
     "recipe[iptables::setup]",

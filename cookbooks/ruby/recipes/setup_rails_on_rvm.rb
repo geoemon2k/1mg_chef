@@ -6,6 +6,10 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+package 'sqlite-devel' do
+  action :install
+end
+
 execute "create_gemset_rails" do
   command "/usr/local/rvm/bin/rvm gemset create rails-" + node['ruby']['rails_version']
   action :run
@@ -20,5 +24,13 @@ end
 
 gem_package "rails" do
   version node['ruby']['rails_version']
+  action :install
+end
+
+gem_package "execjs" do
+  action :install
+end
+
+gem_package "therubyracer" do
   action :install
 end
