@@ -82,7 +82,7 @@
         {"pkg_name": "php-mcrypt", "pkg_option": "--enablerepo=epel"},
         {"pkg_name": "php-mysql"},
         {"pkg_name": "php-pecl-apc"},
-        {"pkg_name": "php-redis", "pkg_option": "--enablerepo=epel"},
+        {"pkg_name": "php-redis", "pkg_option": "--enablerepo=epel"}
         ],
       "spawnfcgi": {
         "num": "5"
