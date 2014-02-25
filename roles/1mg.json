@@ -74,7 +74,7 @@
       ]
     },
     "nginx" : {
-      "conf_lists" : ["server.1mg.org", "www.1mg.org"]
+      "conf_lists" : ["server.1mg.org", "www.1mg.org", "www.1mg.biz"]
     },
     "php": {
       "packages": [
