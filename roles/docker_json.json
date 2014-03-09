@@ -1,0 +1,30 @@
+{
+  "json_class" : "Chef::Role",
+  "name": "docker_centos",
+  "run_list": [
+    "recipe[yum::epel]",
+    "recipe[base::packages]",
+    "recipe[centos::sysctl.conf]",
+    "recipe[centos::selinux]",
+    "recipe[docker::install]"
+  ],
+  "default_attributes" : {
+    "base": {
+      "packages": [{
+        "name": "unzip"
+      }, {
+        "name": "docker-io",
+        "options": "--enablerepo=epel"
+      }]
+    },
+    "centos": {
+      "sysctl.conf": [{
+        "name": "net.ipv4.ip_forward",
+        "value": "1"
+      }],
+      "selinux": "disabled"
+    }
+  },
+  "over_attributes" : {
+  }
+}
