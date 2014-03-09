@@ -20,6 +20,13 @@ when 'centos'
     not_if do File.directory?("/tmp/docker-centos-rpm-master/") end
   end
 
+  bash "add root mount to grub.conf" do
+    code <<-EOH
+      sed -i  -e "s/(kernel \/boot\.*)/\1 root=\/dev\/vda1/" /boot/grub/grub.conf
+    EOH
+    only_if "rpm -q kernel-*joyent*"
+  end
+
   bash "install kernel-ml-aufs" do
     code <<-EOH
       rpm -Uvh /tmp/docker-centos-rpm-master/kernel-ml-aufs-*.rpm
