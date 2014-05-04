@@ -11,6 +11,6 @@ package "openvas"  do
   options "--enablerepo=atomic"
 end
 
-service openvas do
+service "openvas" do
   action [:enable, :start]
 end
