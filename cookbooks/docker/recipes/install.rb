@@ -22,9 +22,10 @@ when 'centos'
 
   bash "add root mount to grub.conf" do
     code <<-EOH
-      sed -i  -e "s/(kernel \/boot\.*)/\1 root=\/dev\/vda1/" /boot/grub/grub.conf
+      sed -i -e "s/\(kernel \/boot\/.*\)/\1 root=\/dev\/vda1/" /boot/grub/grub.conf
     EOH
     only_if "rpm -q kernel-*joyent*"
+    not_if "egrep 'root=/dev/vda1' /boot/grub/grub.conf"
   end
 
   bash "install kernel-ml-aufs" do
