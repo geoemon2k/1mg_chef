@@ -22,13 +22,13 @@ end
 if node['yum']['atomic']['disabled']
   execute "disable_atomic_repo" do
     action :run
-    command "sed -i -e 's/enabled=1/enabled=0/g' /etc/yum.repos.d/atomic.repo"
-    only_if 'grep "enabled=1" /etc/yum.repos.d/atomic.repo'
+    command "sed -i -e 's/^enabled = 1/enabled = 0/g' /etc/yum.repos.d/atomic.repo"
+    only_if 'grep "enabled = 1" /etc/yum.repos.d/atomic.repo'
   end
 else
   execute "enable_atomic_repo" do
     action :run
-    command "sed -i -e 's/enabled=0/enabled=1/g' /etc/yum.repos.d/atomic.repo"
+    command "sed -i -e 's/^enabled = 0/enabled = 1/g' /etc/yum.repos.d/atomic.repo"
     only_if 'grep "enabled=0" /etc/yum.repos.d/atomic.repo'
   end
 end
