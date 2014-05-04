@@ -9,6 +9,7 @@
     "recipe[yum::epel]",
     "recipe[yum::remi]",
     "recipe[yum::atomic]",
+    "recipe[sendmail::setup]",
     "recipe[sshd::setup]",
     "recipe[nsd::setup]",
     "recipe[nsd::setup_zone]",
@@ -19,6 +20,7 @@
     "recipe[redis::setup]",
     "recipe[ruby::setup_rvm]",
     "recipe[nginx::setup]",
+    "recipe[openvas::setup]",
     "recipe[iptables::setup]",
     "recipe[base::setup_cucumber]"
   ],
