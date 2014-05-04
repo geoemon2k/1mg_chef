@@ -11,6 +11,8 @@ package "openvas"  do
   options "--enablerepo=atomic"
 end
 
-service "openvas" do
-  action [:enable, :start]
+execute "setup openvas" do
+  action :run
+  command "echo 'y'|openvas-setup"
+  only_if FileTest.file("/usr/bin/openvas-cli")
 end
