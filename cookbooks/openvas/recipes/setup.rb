@@ -14,5 +14,17 @@ end
 execute "setup openvas" do
   action :run
   command "echo 'y'|openvas-setup"
-  only_if FileTest.file("/usr/bin/openvas-cli")
+  not_if FileTest.directory("/var/lib/openvas/plugins/")
+end
+
+service "openvas-scanner" do
+  action [:enable, :start]
+end
+
+service "openvas-manager" do
+  action [:enable, :start]
+end
+
+service "openvas-manager" do
+  action :stop, immidiately
 end
