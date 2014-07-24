@@ -1,5 +1,5 @@
 [mysqld]
-<% node['mysqld']['conf_lists'].each_pair do |name, value| %>
+<% node['mysqld']['conf_lists']['mysqld'].each_pair do |name, value| %>
 <%= name %> = <%= value %>
 <% end %>
 
@@ -9,3 +9,8 @@ symbolic-links=0
 [mysqld_safe]
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
+
+[mysql]
+<% node['mysqld']['conf_lists']['mysql'].each_pair do |name, value| %>
+<%= name %> = <%= value %>
+<% end %>
