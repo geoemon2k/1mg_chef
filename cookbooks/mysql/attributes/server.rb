@@ -9,7 +9,7 @@ end
  
 default['mysqld']['etc'] = '/etc'
 default['mysqld']['lib'] = '/var/lib/mysql'
-default['mysqld']['conf_lists'] = {
+default['mysqld']['conf_lists']['mysqld'] = {
   'datadir' => '/var/lib/mysql',
   'socket' => node['mysqld']['lib'] + "/mysql.sock",
   'user' => 'mysql',
@@ -24,6 +24,10 @@ default['mysqld']['conf_lists'] = {
   'net_buffer_length' => '2K',
   'thread_stack' => '64K',
   'max_connections' => '2',
-  'server-id' => '1'
+  'server-id' => '1',
+  'default-character-set' => 'utf8'
+}
+default['mysqld']['conf_lists']['mysql'] = {
+  'default-character-set' => 'utf8'
 }
 default['mysql']['repo'] = nil
