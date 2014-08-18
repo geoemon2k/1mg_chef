@@ -1,6 +1,6 @@
 $TTL 120
 @ IN SOA 1mg.biz. root.1mg.biz. (
-    2014022500 ; Serial
+    2014081800 ; Serial
     300 ; Refresh
     600 ; Retry
     43200; Expire
@@ -14,3 +14,4 @@ www             IN CNAME @
 
 @               IN MX 10 mail
 mail            IN A 164.46.233.143
+www2            IN A 210.152.157.228
