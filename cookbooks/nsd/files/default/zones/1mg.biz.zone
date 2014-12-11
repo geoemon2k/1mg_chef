@@ -1,12 +1,12 @@
 $TTL 120
 @ IN SOA 1mg.biz. root.1mg.biz. (
-    2014081800 ; Serial
+    2014121100 ; Serial
     300 ; Refresh
     600 ; Retry
     43200; Expire
     300 ) ; Minimum
 ;NS
-@               IN NS NS1.MAIHAMA-NET.COM.
+@               IN NS NS3.MAIHAMA-NET.COM.
 @               IN NS NS2.MAIHAMA-NET.COM.
 
 @               IN A 183.181.14.200
