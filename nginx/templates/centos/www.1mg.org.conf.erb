@@ -1,0 +1,60 @@
+server {
+<% if node[:ip6address] -%> 
+#    listen [<%= node[:ip6address] %>]:80;
+<% end -%>
+    listen       80;
+    server_name  www.1mg.org;
+
+    #charset koi8-r;
+    access_log  /var/log/nginx/www.1mg.org.access.log  main;
+    error_log  /var/log/nginx/www.1mg.org.error.log debug;
+
+    root /usr/local/1mg/www/www.1mg.org/;
+    index  index.php index.html index.htm;
+    sendfile          off;
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    location ~ \.php$ {
+        root /usr/local/1mg/www/www.1mg.org;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass unix:/var/run/php-fcgi.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+    location / {
+        expires 1d;
+    }
+
+    location /wp/wp-admin {
+        auth_basic    "Need to Auth!!";
+        auth_basic_user_file  "/usr/local/1mg/www/.htpasswd";
+    }
+    
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+    location = /status {
+        stub_status on;
+        allow 183.76.0.0/16;
+        deny all;
+    }
+}
