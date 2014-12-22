@@ -21,6 +21,14 @@ template node['vsftpd']['etc'] + "/vsftpd.conf" do
   notifies :reload, 'service[' + node['vsftpd']['service'] + ']'
 end
 
+template node['vsftpd']['etc'] + "/chroot_list" do
+  source "chroot_list.erb"
+  owner 'root'
+  group 'root'
+  mode  '0644'
+  notifies :reload, 'service[' + node['vsftpd']['service'] + ']'
+end
+
 service node['vsftpd']['service'] do
   action [:enable, :start]
   supports :status => true, :restart => true
