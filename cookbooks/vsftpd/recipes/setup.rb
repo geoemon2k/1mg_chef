@@ -13,13 +13,13 @@ package node['vsftpd']['pkg_name'] do
   end
 end
 
-#template node['vsftpd']['etc'] + "/vsftpd.conf" do
-#  source "vsftpd.conf.erb"
-#  owner node['vsftpd']['user']
-#  group node['vsftpd']['group']
-#  mode  0644
-#  notifies :reload, 'service[' + node['vsftpd']['service'] + ']'
-#end
+template node['vsftpd']['etc'] + "/vsftpd.conf" do
+  source "vsftpd.conf.erb"
+  owner 'root'
+  group 'root'
+  mode  '0644'
+  notifies :reload, 'service[' + node['vsftpd']['service'] + ']'
+end
 
 service node['vsftpd']['service'] do
   action [:enable, :start]
