@@ -30,6 +30,6 @@ template node['vsftpd']['etc'] + "/chroot_list" do
 end
 
 service node['vsftpd']['service'] do
-  action [:enable, :start]
+  action [:disable, :stop]
   supports :status => true, :restart => true
 end
