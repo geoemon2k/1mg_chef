@@ -1,6 +1,6 @@
 $TTL 120
 @ IN SOA 1mg.biz. root.1mg.biz. (
-    2014121100 ; Serial
+    2015020100 ; Serial
     300 ; Refresh
     600 ; Retry
     43200; Expire
@@ -9,9 +9,12 @@ $TTL 120
 @               IN NS NS3.MAIHAMA-NET.COM.
 @               IN NS NS2.MAIHAMA-NET.COM.
 
-@               IN A 183.181.14.200
+@               IN A 210.250.250.128
 www             IN CNAME @
 
 @               IN MX 10 mail
-mail            IN A 164.46.233.143
-www2            IN A 210.152.157.228
+mail            IN A 210.250.250.128
+
+;SPF
+@               IN TXT "v=spf1 redirect=_spf.1mg.org"
+_spf            IN TXT "v=spf1 +ip4:210.250.250.128/32 ~all"
