@@ -37,6 +37,20 @@ template node['base']['etc'] + '/sysconfig/jenkins' do
   notifies :restart, "service[jenkins]"
 end
 
+directory '/var/lib/jenkins/.ssh' do
+  owner 'jenkins'
+  group 'jenkins'
+  mode '0755'
+  action :create
+end
+
+template '/var/lib/jenkins/.ssh/config' do
+  source "config.erb"
+  owner "jenkins"
+  group "jenkins"
+  mode "0400"
+end
+
 service "jenkins" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
