@@ -4,7 +4,7 @@ DATE=`date +%Y%m%d%H%M`
 #MYSQL archive
 cd /usr/local/
 <% node['base']['bk_dbnames'].each do |dbname| %>
-mysqldump -u dumpuser -pdumppass <%= @dbname %> > 1mg/data/mysql/<%= @dbname %>.$DATE.dump
+mysqldump -u dumpuser -pdumppass <%= dbname %> > 1mg/data/mysql/<%= dbname %>.$DATE.dump
 <% end %>
 
 #ALL archive
