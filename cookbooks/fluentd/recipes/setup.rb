@@ -33,4 +33,4 @@ end
 service node['fluentd']['service'] do
   action [:enable, :start]
   supports :status => true, :restart => true
-end"
+end
