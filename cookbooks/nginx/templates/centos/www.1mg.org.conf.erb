@@ -6,7 +6,8 @@ server {
     server_name  www.1mg.org;
 
     #charset koi8-r;
-    access_log  /var/log/nginx/www.1mg.org.access.log  main;
+    access_log  /var/log/nginx/www.1mg.org.access.log ltsv;
+#    access_log  /var/log/nginx/www.1mg.org.access.log main;
     error_log  /var/log/nginx/www.1mg.org.error.log debug;
 
     root /usr/local/1mg/www/www.1mg.org/;
