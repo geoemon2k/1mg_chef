@@ -8,4 +8,3 @@ case node[:platform]
 when 'centos'
   default['nginx']['pkg_options'] = '--enablerepo=epel'
 end
-
