@@ -2,10 +2,7 @@
   "json_class" : "Chef::Role",
   "name": "1mg",
   "run_list": [
-    "recipe[base::setup_hostname]",
-    "recipe[base::setup_aliases]",
-    "recipe[base::setup_root_user]",
-    "recipe[base::stop_service]",
+    "recipe[base::setup]",
     "recipe[yum::epel]",
     "recipe[yum::remi]",
     "recipe[yum::atomic]",
