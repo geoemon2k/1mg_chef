@@ -21,7 +21,7 @@
     "recipe[ruby::setup_rvm]",
     "recipe[nginx::setup]",
     "recipe[vsftpd::setup]",
-    "recipe[fluentd::setup]"
+    "recipe[fluentd::setup]",
     "recipe[iptables::setup]",
     "recipe[base::setup_cucumber]"
   ],
