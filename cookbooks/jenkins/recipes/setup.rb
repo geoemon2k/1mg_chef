@@ -51,6 +51,13 @@ template '/var/lib/jenkins/.ssh/config' do
   mode "0400"
 end
 
+template node['base']['etc'] + '/sudoers.d/99-jenkins' do
+  source "99-jenkins.erb"
+  owner "root"
+  group "root"
+  mode "0400"
+end
+
 service "jenkins" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
