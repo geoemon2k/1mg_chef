@@ -45,6 +45,14 @@ if node['nginx']['conf_lists'] != nil
   end
 end
 
+# for fluentd
+directory '/var/log/nginx' do
+  owner node['nginx']['user']
+  group node['nginx']['group']
+  mode '0705'
+  action :create
+end
+
 service node['nginx']['service'] do
   action [:enable, :start]
   supports :status => true, :restart => true

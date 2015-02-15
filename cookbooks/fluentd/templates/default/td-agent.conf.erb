@@ -100,3 +100,25 @@
 #    path /var/log/td-agent/td-%Y-%m-%d/%H.log
 #  </store>
 #</match>
+<source>
+  type tail
+  format ltsv
+  tag nginx
+  path /var/log/nginx/www.1mg.org.access.log
+  pos_file /var/log/td-agent/buffer/www.1mg.org.access.log.pos
+</source>
+
+<match nginx>
+  type typecast
+  item_types request_length:integer,status:integer,request_time:float,bytes_sent:integer,body_bytes_sent:integer,upstream_response_time:integer
+  prefix typed
+</match>
+
+<match typed.nginx>
+  type elasticsearch
+  host 210.152.137.204
+  port 9200
+  index_name fluentd
+  type_name nginx
+  logstash_format true
+</match>
