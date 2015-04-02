@@ -6,7 +6,7 @@
     "recipe[yum::epel]",
     "recipe[yum::remi]",
     "recipe[yum::atomic]",
-    "recipe[sendmail::setup]",
+    "recipe[sendmail::unsetup]",
     "recipe[sshd::setup]",
     "recipe[nsd::setup]",
     "recipe[nsd::setup_zone]",
