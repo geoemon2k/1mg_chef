@@ -3,6 +3,7 @@ default['base']['root_address'] = 'root@localhost'
 default['base']['etc'] = '/etc'
 default['base']['hostname'] = 'localhost'
 default['base']['bk_dbnames'] = ["wp", "phpbb", "mysql" ]
+default['base']['1mg_dir'] = '/usr/local/1mg'
 case node[:platform]
 when 'centos', 'fedora'
   default['base']['sysconfig'] = '/etc/sysconfig'
