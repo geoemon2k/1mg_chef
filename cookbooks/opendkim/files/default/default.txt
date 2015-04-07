@@ -1,0 +1,2 @@
+dkimselecter._domainkey IN  TXT ( "v=DKIM1; k=rsa; "
+    "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC0XiZYVvgqvvLW+WUvCRqMJT1YnRfWwM19dbUiI243Y4V+WCs8loFThtu6qQ1wbzWzFd6BL0xswdgXP3k1HQxLCcxHOSZNX1uuyNkF0x8knMQ4l+iyQfZTCrEwYgXyFVLPeyaoYdA8Pp1s2dPsZg3UBg+LJ9Qm5rpIZXLroVQEWwIDAQAB" )  ; ----- DKIM key dkimselecter for 1mg.org
