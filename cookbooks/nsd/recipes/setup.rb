@@ -15,8 +15,9 @@ if node['platform'] == 'centos' && node['platform_version'].to_i < 7
   end
 else
   ['gcc', 'bison', 'flex', 'byacc', 'openssl-devel'].each do |package_name|
-  package "#{package_name}"  do
-    action :install
+    package "#{package_name}"  do
+      action :install
+    end
   end
 
   bash 'install nsd' do
