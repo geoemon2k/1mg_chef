@@ -65,6 +65,6 @@ template node['nsd']['etc'] + "/nsd.conf" do
 end
 
 service node['nsd']['service'] do
-  action [:enable, :start]
+  action [:enabled, :start]
   supports :reload => true, :status => true, :restart => true, :rebuild => true
 end
