@@ -29,7 +29,7 @@ else
     cd nsd-4.1.3
     ./configure --with-libevent=no && make && make install
     EOH
-    not_if do File.exists('/usr/local/sbin/nsd') end
+    not_if do File.file?('/usr/local/sbin/nsd') end
   end
 
   cookbook_file '/usr/lib/systemd/system/nsd.service' do
