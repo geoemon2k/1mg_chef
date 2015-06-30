@@ -1,0 +1,20 @@
+[Unit]
+Description=NSD DNS Server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/nsd/nsd.pid
+EnvironmentFile=-/etc/sysconfig/nsd
+ExecStartPre=/usr/local/sbin/nsdc -c /etc/nsd/nsd.conf rebuild
+ExecStart=/usr/local/sbin/nsd -d -c /etc/nsd/nsd.conf $OTHER_NSD_OPTS
+ExecReload=/usr/local/sbin/nsdc -c /etc/nsd/nsd.conf rebuild
+ExecReload=/usr/local/sbin/nsdc -c /etc/nsd/nsd.conf reload
+# notify blocks on misconfigurations - but does show it very loudly
+ExecReload=/usr/local/sbin/nsdc -c /etc/nsd/nsd.conf notify
+ExecStop=/usr/local/sbin/nsdc -c /etc/nsd/nsd.conf patch
+ExecStop=/usr/local/sbin/nsdc -c /etc/nsd/nsd.conf stop
+ExecStopPost=/bin/rm -f /var/lib/nsd/xfrd.state
+
+[Install]
+WantedBy=multi-user.target
