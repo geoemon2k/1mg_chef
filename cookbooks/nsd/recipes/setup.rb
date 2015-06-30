@@ -64,7 +64,7 @@ template node['nsd']['etc'] + "/nsd.conf" do
   notifies :restart, 'service[' + node['nsd']['service'] + ']'
 end
 
-service node['nsd']['service'] do
-  action [:enabled, :start]
-  supports :reload => true, :status => true, :restart => true, :rebuild => true
-end
+#service node['nsd']['service'] do
+#  action [:enable, :start]
+#  supports :reload => true, :status => true, :restart => true, :rebuild => true
+#end
