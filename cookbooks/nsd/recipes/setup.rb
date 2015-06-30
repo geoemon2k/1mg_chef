@@ -24,10 +24,10 @@ else
     user 'root'
     cwd '/tmp'
     code <<-EOH
-    wget http://www.nlnetlabs.nl/downloads/nsd/nsd-4.1.3.tar.gz
-    tar zxf nsd-4.1.3
-    cd nsd-4.1.3
-    ./configure --with-libevent=no && make && make install
+    wget http://www.nlnetlabs.nl/downloads/nsd/nsd-3.2.19.tar.gz
+    tar zxf nsd-3.2.19
+    cd nsd-3.2.19
+    ./configure && make && make install
     EOH
     not_if do File.file?('/usr/local/sbin/nsd') end
   end
