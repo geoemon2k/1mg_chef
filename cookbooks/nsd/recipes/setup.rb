@@ -32,6 +32,20 @@ else
     not_if do File.file?('/usr/local/sbin/nsd') end
   end
 
+  group 'nsd' do
+    action :create
+    gid 1000
+  end
+  
+  user 'nsd' do
+    action :create
+    comment 'NSD Daemon User'
+    uid 1000
+    gid 'nsd'
+    home '/etc/nsd'
+    shell '/sbin/nologin'
+  end
+  
   cookbook_file '/usr/lib/systemd/system/nsd.service' do
      source 'nsd.service'
      owner 'root'
