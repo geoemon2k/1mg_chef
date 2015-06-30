@@ -40,6 +40,8 @@ else
    end
 end
 
+include_recipe 'nsd::setup_zone'
+
 template node['nsd']['etc'] + "/nsd.conf" do
   source 'nsd.conf.erb'
   owner 'root'
