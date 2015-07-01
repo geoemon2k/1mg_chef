@@ -5,22 +5,12 @@
     "recipe[base::setup]",
     "recipe[yum::epel]",
     "recipe[yum::remi]",
-    "recipe[yum::atomic]",
     "recipe[sshd::setup]",
     "recipe[nsd::setup]",
-    "recipe[jenkins::setup]",
-    "recipe[jenkins::setup_plugins]",
-    "recipe[mysql::setup_server]",
-    "recipe[php::setup_with_spawnfcgi]",
-    "recipe[redis::setup]",
-    "recipe[ruby::setup_rvm]",
     "recipe[nginx::setup]",
+    "recipe[phpfpm::default]",
     "recipe[vsftpd::setup]",
-    "recipe[opendkim::setup]",
-    "recipe[postfix::setup]",
-    "recipe[fluentd::setup]",
-    "recipe[iptables::setup]",
-    "recipe[base::setup_cucumber]"
+    "recipe[iptables::setup]"
   ],
   "default_attributes" : {
     "base": {

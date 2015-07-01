@@ -6,6 +6,16 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+if node['platform'] == 'centos' && node['platform_version'].to_i >= 7
+  bash 'install mysql-community-repo' do
+    user 'root'
+    cwd '/tmp'
+    code <<-EOH
+      rpm -ivh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+    EOH
+  end
+end
+
 package node['mysqld']['package'] do
   action :install
   if node['mysqld']['install_option']
