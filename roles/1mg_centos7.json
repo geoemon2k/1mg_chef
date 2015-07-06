@@ -8,7 +8,9 @@
     "recipe[sshd::setup]",
     "recipe[nsd::setup]",
     "recipe[mariadb::setup]",
-    "recipe[nginx::setup]",
+    "recipe[nginx::install]",
+    "recipe[phpfpm::default]",
+    "recipe[nginx:setup]",
     "recipe[vsftpd::setup]",
     "recipe[iptables::setup]"
   ],

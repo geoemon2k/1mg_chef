@@ -6,15 +6,6 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-package node['nginx']['pkg_name'] do
-  action :install
-  if node['nginx']['pkg_options']
-    options node['nginx']['pkg_options']
-  end
-end
-
-include_recipe 'phpfpm::default'
-
 cookbook_file node['nginx']['include_dir'] + '/default.conf' do
    action :delete
 end
