@@ -8,18 +8,18 @@
 -A INPUT -p icmp -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 
-<% @iptables['tcp'].each_pair do |port,  value| -%>
+<% @iptables['tcp'].each_pair do |port,  value| %>
 # allow port <%= port %>/tcp
-<% value.each do |ip| -%>
+<%   value.each do |ip| %>
 -A INPUT -s <%= ip %> -p tcp -m tcp --dport <%= port %> -j ACCEPT
-<% end -%>
+<%   end %>
+<% end %>
 
-<% @iptables['udp'].each_pair do |port,  value| -%>
+<% @iptables['udp'].each_pair do |port,  value| %>
 # allow port <%= port %>/udp
-<% value.each do |ip| -%>
+<%   value.each do |ip| %>
 -A INPUT -s <%= ip %> -p udp -m udp --dport <%= port %> -j ACCEPT
-<% end -%>
-
-<% end -%>
+<%   end %>
+<% end %>
 COMMIT
 
