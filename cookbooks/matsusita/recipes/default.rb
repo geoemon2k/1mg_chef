@@ -12,6 +12,7 @@ user node['matsusita']['owner'] do
   gid node['matsusita']['group']
   home node['matsusita']['docroot']
   shell '/bin/bash'
+  password '$1$9z8oaotA$uBALbMLxOYIfFBerAztjm0'
   supports :manage_home => true, :non_unique => false
 end
 
