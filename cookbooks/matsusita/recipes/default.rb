@@ -6,12 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-group node['matsusita']['group'] do
-  action :create
-  gid 998
-end
-
-user node['matsusita']['user'] do
+user node['matsusita']['owner'] do
   action :create
   uid 998
   gid node['matsusita']['group']
