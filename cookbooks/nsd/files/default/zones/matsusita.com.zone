@@ -1,11 +1,10 @@
-$TTL 300
-@ IN SOA 1mg.org. root.1mg.org. (
+$TTL 120
+@ IN SOA 1mg.biz. root.1mg.biz. (
     2015070601 ; Serial
     300 ; Refresh
     600 ; Retry
-    43200 ; Expire
+    43200; Expire
     300 ) ; Minimum
-
 ;NS
 @               IN NS NS3.MAIHAMA-NET.COM.
 @               IN NS NS2.MAIHAMA-NET.COM.
@@ -14,14 +13,10 @@ $TTL 300
 @               IN MX 10 www
 
 ;SPF
-@               IN TXT "v=spf1 redirect=_spf.1mg.org"
+@               IN TXT "v=spf1 redirect=_spf.matsusita.com"
 _spf            IN TXT "v=spf1 +ip4:183.181.14.200/32 ~all"
 
 ;VPS
 @               IN A 183.181.14.200
 www             IN A 183.181.14.200
-www				IN AAAA 2001:2e8:624:0:2:1:0:cc
-server          IN A 183.181.14.200
-server          IN AAAA 2001:2e8:624:0:2:1:0:cc
-;DLV DNSSEC
-;dlv.1mg.org. 0 IN TXT "DLV:1:szleruhnshoo"
+www       IN AAAA 2001:2e8:624:0:2:1:0:cc
