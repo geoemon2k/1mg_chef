@@ -21,7 +21,6 @@ directory node['matsusita']['dataroot'] do
   group node['matsusita']['group']
   mode "0755"
   action :create
-  recursion yes
 end
 
 link node['matsusita']['docroot'] do
