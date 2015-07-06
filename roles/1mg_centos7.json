@@ -9,7 +9,6 @@
     "recipe[nsd::setup]",
     "recipe[mariadb::setup]",
     "recipe[nginx::setup]",
-    "recipe[phpfpm::default]",
     "recipe[vsftpd::setup]",
     "recipe[iptables::setup]"
   ],

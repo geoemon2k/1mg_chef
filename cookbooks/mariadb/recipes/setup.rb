@@ -21,7 +21,7 @@ template node['base']['etc'] + '/my.cnf' do
   notifies :restart, 'service[' + node['mariadbd']['service'] + ']'
 end
 
-directory node['mariadbd']['conf_lists']['datadir'] do
+directory node['mariadbd']['conf_lists']['mariadb']['datadir'] do
   owner node['mariadbd']['owner']
   group node['mariadbd']['group']
   mode "0755"

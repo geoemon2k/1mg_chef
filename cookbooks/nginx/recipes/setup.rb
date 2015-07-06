@@ -13,7 +13,7 @@ package node['nginx']['pkg_name'] do
   end
 end
 
-include_recipe 'phpfpm'
+include_recipe 'phpfpm::default'
 
 cookbook_file node['nginx']['include_dir'] + '/default.conf' do
    action :delete
