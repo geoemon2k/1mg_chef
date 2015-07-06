@@ -1,5 +1,5 @@
 default['mariadbd']['package'] = 'mariadb-server'
-default['mariadbd']['service'] = 'mariadbd'
+default['mariadbd']['service'] = 'mariadb'
 default['mariadbd']['owner'] = 'mysql'
 default['mariadbd']['group'] = 'mysql'
 
