@@ -12,6 +12,7 @@
     "recipe[phpfpm::default]",
     "recipe[nginx::setup]",
     "recipe[vsftpd::setup]",
+    "recipe[postfix::setup]",
     "recipe[iptables::setup]"
   ],
   "default_attributes" : {
