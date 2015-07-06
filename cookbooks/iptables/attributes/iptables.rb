@@ -1,13 +1,13 @@
 include_attribute "base::default"
 
-node.default['iptables']['port'] = {
-  'tcp' => {
+node.default['iptables'] = {
+  'tcp' = {
     '22' => ['0.0.0.0/0'],
     '80' => ['0.0.0.0/0'],
     '53' => ['0.0.0.0/0'],
     '21' => ['127.0.0.1']
-  }, 
-  'udp' => {
+  },
+  'udp' = {
     '53' => ['0.0.0.0/0']
   }
 }

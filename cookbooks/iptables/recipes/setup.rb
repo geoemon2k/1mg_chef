@@ -16,7 +16,7 @@ template node['iptables']['etc'] + '/iptables' do
   group 'root'
   mode '0644'
   variables({
-    :iptables => node[:iptables]
+    :iptables => node['iptables']
   })
   notifies :restart, 'service[iptables]'
 end
