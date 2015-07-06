@@ -7,6 +7,10 @@ node.default['iptables']['port']['tcp'] = {
   '21' => ['127.0.0.1']
 }
 
+node.default['iptables']['port']['udp'] = {
+  '53' => ['0.0.0.0/0']
+}
+
 case node[:platform]
 when 'centos'
   default['iptables']['etc'] = node['base']['sysconfig']

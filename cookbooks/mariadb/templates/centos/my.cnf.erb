@@ -1,0 +1,16 @@
+[mysql]
+<% node['mariadbd']['conf_lists']['mariadbd'].each_pair do |name, value| %>
+<%= name %> = <%= value %>
+<% end %>
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+[mysql_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mariadb/mariadb.pid
+
+[mariadb]
+<% node['mariadbd']['conf_lists']['mariadb'].each_pair do |name, value| %>
+<%= name %> = <%= value %>
+<% end %>

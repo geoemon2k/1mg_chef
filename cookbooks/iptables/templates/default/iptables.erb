@@ -14,6 +14,12 @@
 -A INPUT -s <%= ip %> -p tcp -m tcp --dport <%= port %> -j ACCEPT
 <% end -%>
 
+<% @iptables.port.udp.each_pair do |port,  value| -%>
+# allow port <%= port %>
+<% value.each do |ip| -%>
+-A INPUT -s <%= ip %> -p udp -m udp --dport <%= port %> -j ACCEPT
+<% end -%>
+
 <% end -%>
 COMMIT
 
