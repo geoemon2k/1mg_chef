@@ -10,7 +10,7 @@
     "recipe[mariadb::setup]",
     "recipe[nginx::install]",
     "recipe[phpfpm::default]",
-    "recipe[nginx:setup]",
+    "recipe[nginx::setup]",
     "recipe[vsftpd::setup]",
     "recipe[iptables::setup]"
   ],
