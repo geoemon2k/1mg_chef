@@ -16,9 +16,15 @@ user node['matsusita']['owner'] do
   supports :manage_home => true, :non_unique => false
 end
 
-directory node['matsusita']['docroot'] do
+directory node['matsusita']['dataroot'] do
   owner node['matsusita']['owner']
   group node['matsusita']['group']
   mode "0755"
   action :create
+  recursion yes
 end
+
+link node['matsusita']['docroot'] do
+  to node['matsusita']['dataroot']
+end
+
