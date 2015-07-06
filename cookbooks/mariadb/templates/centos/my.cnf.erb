@@ -1,4 +1,4 @@
-[mysql]
+[mysqld]
 <% node['mariadbd']['conf_lists']['mariadbd'].each_pair do |name, value| %>
 <%= name %> = <%= value %>
 <% end %>
@@ -10,7 +10,7 @@ symbolic-links=0
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mariadb/mariadb.pid
 
-[mariadb]
+[mysql]
 <% node['mariadbd']['conf_lists']['mariadb'].each_pair do |name, value| %>
 <%= name %> = <%= value %>
 <% end %>

@@ -23,8 +23,7 @@ default['mariadbd']['conf_lists']['mariadbd'] = {
   'net_buffer_length' => '2K',
   'thread_stack' => '64K',
   'max_connections' => '2',
-  'server-id' => '1',
-  'default-character-set' => 'utf8'
+  'server-id' => '1'
 }
 default['mariadbd']['conf_lists']['mariadb'] = {
   'default-character-set' => 'utf8'
