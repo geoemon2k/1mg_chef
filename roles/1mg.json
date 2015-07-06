@@ -46,7 +46,8 @@
         "lvm2-monitor",
         "messagebus",
         "udev-post",
-        "netconsole"
+        "netconsole",
+        "firewalld"
       ]
     },
     "sshd" : {
