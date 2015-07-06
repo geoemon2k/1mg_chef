@@ -9,7 +9,6 @@
 group node['matsusita']['group'] do
   action :create
   gid 998
-  members ['paco','vicente']
 end
 
 user node['matsusita']['user'] do
