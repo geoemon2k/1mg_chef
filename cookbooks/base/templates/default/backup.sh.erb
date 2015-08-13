@@ -9,3 +9,11 @@ mysqldump -u dumpuser -pdumppass <%= dbname %> > 1mg/data/mysql/<%= dbname %>.$D
 
 #ALL archive
 tar cfpz ~root/1mg.backup.$DATE.tar.gz ./1mg
+
+# BACKUP ROTATE
+DELETE_NUM=''
+COUNT=`ls /root/1mg.backup*|wc|awk '{print $1}'`
+if [ $COUNT -gt 3 ]; then
+  DELETE_NUM=`expr $COUNT - 2`;
+  ls /root/1mg.backup*|sort|head -${DELETE_NUM}|xargs -IFILE rm -f FILE
+fi
