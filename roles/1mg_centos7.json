@@ -3,6 +3,7 @@
   "name": "1mg",
   "run_list": [
     "recipe[base::setup]",
+    "recipe[centos::sysctl.conf]",
     "recipe[yum::epel]",
     "recipe[yum::remi]",
     "recipe[sshd::setup]",
