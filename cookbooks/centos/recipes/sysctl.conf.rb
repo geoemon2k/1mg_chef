@@ -1,13 +1,13 @@
 if node['centos']['sysctl.conf'] != nil
   if node['platform'] == 'centos'
     template '/etc/sysctl.conf' do
-      source 'sysctl.conf.cent' + node['platform_version'].to_i + '.erb'
+      source "sysctl.conf.cent#{node['platform_version'].to_i}.erb"
       owner 'root'
       group 'root'
       mode '0644'
-      variables {
+      variables ({
         sysctl => node['centos']['sysctl.conf']
-      }
+      })
     end
   end
 
