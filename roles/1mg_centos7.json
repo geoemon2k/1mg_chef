@@ -44,6 +44,12 @@
         "firewalld"
       ]
     },
+    "centos": {
+      "sysctl.conf": [{
+        "name": "net.ipv4.tcp_syncookies",
+        "value": "1"
+      }]
+    },
     "sshd" : {
       "conf_lists" : {
         "PermitRootLogin" : "yes",
