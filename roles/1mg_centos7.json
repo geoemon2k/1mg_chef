@@ -13,6 +13,7 @@
     "recipe[nginx::setup]",
     "recipe[vsftpd::setup]",
     "recipe[postfix::setup]",
+    "recipe[docker::setup]",
     "recipe[iptables::setup]",
     "recipe[matsusita::default]"
   ],
