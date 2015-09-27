@@ -1,6 +1,6 @@
 $TTL 300
 @ IN SOA 1mg.org. root.1mg.org. (
-    2015070602 ; Serial
+    2015092700 ; Serial
     300 ; Refresh
     600 ; Retry
     43200 ; Expire
