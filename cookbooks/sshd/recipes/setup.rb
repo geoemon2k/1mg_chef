@@ -27,7 +27,7 @@ group 'sftponly' do
   gid 1001
 end
 
-node["sshd"]["sftp_users"].each do [sftp_users]
+node["sshd"]["sftp_users"].each do |sftp_users|
   user sftp_users["user"] do
     uid sftp_users["uid"]
     action :create
