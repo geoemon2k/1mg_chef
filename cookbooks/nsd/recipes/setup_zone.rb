@@ -31,7 +31,7 @@ if node['nsd']['zones'] != nil
       owner "root"
       group "root"
       mode '0644'
-      notifies :reload, 'service[' + node['nsd']['service'] + ']'
+      notifies :restart, 'service[' + node['nsd']['service'] + ']'
     end
   end
 end
