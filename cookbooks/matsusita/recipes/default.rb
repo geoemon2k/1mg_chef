@@ -26,4 +26,3 @@ end
 link node['matsusita']['docroot'] do
   to node['matsusita']['dataroot']
 end
-

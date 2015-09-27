@@ -128,9 +128,8 @@ X11Forwarding yes
 #	ForceCommand cvs server
 Subsystem       sftp    internal-sftp -f authpriv -l DEBUG3
 
-Match user anth
-#  ForceCommand internal-sftp
-  ChrootDirectory /home/anth
-  PasswordAuthentication no
+Match group sftponly
+  ChrootDirectory /home/%u
   X11Forwarding no
   AllowTcpForwarding no
+  ForceCommand internal-sftp

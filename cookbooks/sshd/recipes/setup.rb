@@ -21,3 +21,19 @@ service node['sshd']['service'] do
   action [:enable, :start]
   supports :status => true, :restart => true
 end
+
+group 'sftponly' do
+  action :create
+  gid 1001
+end
+
+node["sshd"]["sftp_users"].each do [sftp_users]
+  user sftp_users["user"] do
+    uid sftp_users["uid"]
+    action :create
+    gid "sftponly"
+    shell '/bin/zsh'
+    home "/home/#{sftp_users['user']}" 
+    supports :manage_home => true
+  end
+end
