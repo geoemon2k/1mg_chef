@@ -14,7 +14,7 @@
     "recipe[vsftpd::setup]",
     "recipe[postfix::setup]",
     "recipe[iptables::setup]",
-    "recipe[matsusita::default]"
+    "recipe[matsushita::default]"
   ],
   "default_attributes" : {
     "base": {
