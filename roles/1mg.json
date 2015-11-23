@@ -20,6 +20,7 @@
     "recipe[postfix::setup]",
     "recipe[fluentd::setup]",
     "recipe[iptables::setup]",
+    "recipe[matsushita::setup]",
     "recipe[base::setup_cucumber]"
   ],
   "default_attributes" : {

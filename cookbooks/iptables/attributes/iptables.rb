@@ -12,6 +12,10 @@ node.default['iptables'] = {
   }
 }
 
+node.default['iptables_hashlimit'] = {
+
+}
+
 case node[:platform]
 when 'centos'
   default['iptables']['etc'] = node['base']['sysconfig']
