@@ -1,5 +1,6 @@
 #!/bin/bash
 DATE=`date +%Y%m%d%H%M`
+BACKUP_NUM=7
 
 #MYSQL archive
 cd /usr/local/
@@ -13,7 +14,31 @@ tar cfpz ~root/1mg.backup.$DATE.tar.gz ./1mg
 # BACKUP ROTATE
 DELETE_NUM=''
 COUNT=`ls /root/1mg.backup*|wc|awk '{print $1}'`
-if [ $COUNT -gt 3 ]; then
-  DELETE_NUM=`expr $COUNT - 2`;
+if [ $COUNT -gt $BACKUP_NUM ]; then
+  DELETE_NUM=`expr $COUNT - $BACKUP_NUM - 1`;
   ls /root/1mg.backup*|sort|head -${DELETE_NUM}|xargs -IFILE rm -f FILE
+fi
+
+# DUMP_FILE phpbb.dump ROTATE
+DELETE_NUM=''
+COUNT=`ls 1mg/data/mysql/phpbb.*.dump|wc|awk '{print $1}'`
+if [ $COUNT -gt $BACKUP_NUM ]; then
+  DELETE_NUM=`expr $COUNT - $BACKUP_NUM - 1`;
+  ls 1mg/data/mysql/phpbb.*.dump|sort|head -${DELETE_NUM}|xargs -IFILE rm -f FILE
+fi
+
+# DUMP_FILE wp.dump ROTATE
+DELETE_NUM=''
+COUNT=`ls 1mg/data/mysql/wp.*.dump|wc|awk '{print $1}'`
+if [ $COUNT -gt $BACKUP_NUM ]; then
+  DELETE_NUM=`expr $COUNT - $BACKUP_NUM - 1`;
+  ls 1mg/data/mysql/wp.*.dump|sort|head -${DELETE_NUM}|xargs -IFILE rm -f FILE
+fi
+
+# DUMP_FILE mysql.dump ROTATE
+DELETE_NUM=''
+COUNT=`ls 1mg/data/mysql/mysql.*.dump|wc|awk '{print $1}'`
+if [ $COUNT -gt $BACKUP_NUM ]; then
+  DELETE_NUM=`expr $COUNT - $BACKUP_NUM - 1`;
+  ls 1mg/data/mysql/mysql.*.dump|sort|head -${DELETE_NUM}|xargs -IFILE rm -f FILE
 fi
