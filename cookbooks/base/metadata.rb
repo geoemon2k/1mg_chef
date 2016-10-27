@@ -1,4 +1,4 @@
-name             'server.1mg.org'
+name             'base'
 maintainer       'uehata'
 maintainer_email 'keiji.ue@gmail.com'
 license          'All rights reserved'
