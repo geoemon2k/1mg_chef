@@ -16,5 +16,5 @@ end
 cron 'backup' do
   hour '0'
   minute '0'
-  command 'sh /usr/local/1mg/bin/backup.sh'
+  command 'sh /etc/cron.d/backup.sh'
 end
