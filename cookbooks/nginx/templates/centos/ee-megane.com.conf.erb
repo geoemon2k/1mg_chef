@@ -1,4 +1,5 @@
 server {
+    client_max_body_size 20M;
 <% if node[:ip6address] %> 
 #    listen [<%= node[:ip6address] %>]:80;
 <% end %>

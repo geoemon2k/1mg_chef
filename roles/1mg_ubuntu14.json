@@ -16,7 +16,7 @@
       "ssh",
       "cron",
       "nsd",
-      "mysql-server"
+      "mysql"
       ],
       "off_services": [
         "ajaxterm",
