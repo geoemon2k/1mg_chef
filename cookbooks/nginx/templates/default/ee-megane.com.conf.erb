@@ -10,7 +10,7 @@ server {
     access_log  /var/log/nginx/ee-megane.com.access.log main;
     error_log  /var/log/nginx/ee-megane.com.error.log debug;
 
-    root /user/local/1mg/www/ee-megane.com/;
+    root /usr/local/1mg/www/ee-megane.com/;
     index  index.php index.html index.htm;
     sendfile          off;
 
@@ -32,7 +32,7 @@ server {
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     #
     location ~ \.php$ {
-        root /user/local/1mg/www/ee-megane.com;
+        root /usr/local/1mg/www/ee-megane.com;
         include /etc/nginx/fastcgi_params;
         fastcgi_pass     127.0.0.1:9000;
         fastcgi_index index.php;
