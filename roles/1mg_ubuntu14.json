@@ -18,7 +18,8 @@
       "ssh",
       "cron",
       "nsd",
-      "mysql"
+      "mysql",
+      "spawn-fcgi"
       ],
       "off_services": [
         "ajaxterm",

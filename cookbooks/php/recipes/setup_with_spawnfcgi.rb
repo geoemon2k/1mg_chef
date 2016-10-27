@@ -48,5 +48,5 @@ when 'ubuntu'
 end
 
 service node['php']['spawnfcgi']['service'] do
-  action [:enable, :start]
+  action :nothing
 end
