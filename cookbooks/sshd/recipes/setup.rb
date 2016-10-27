@@ -6,6 +6,11 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+service node['sshd']['service'] do
+  action :nothing
+  supports :status => true, :restart => true
+end
+
 package node['sshd']['pkg_name'] do
   action :install
 end
