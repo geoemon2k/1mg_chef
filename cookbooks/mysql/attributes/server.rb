@@ -1,10 +1,12 @@
 default['mysqld']['package'] = 'mysql-server'
-default['mysqld']['service'] = 'mysqld'
 default['mysqld']['owner'] = 'mysql'
 default['mysqld']['group'] = 'mysql'
 
 case node[:platform]
-when 'centos', 'ubuntu'
+when 'centos'
+  default['mysqld']['service'] = 'mysqld'
+when 'ubuntu'
+  default['mysqld']['service'] = 'mysql'
 end
  
 default['mysqld']['etc'] = '/etc'
