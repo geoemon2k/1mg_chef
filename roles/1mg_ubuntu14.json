@@ -8,6 +8,7 @@
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
     "recipe[nginx::setup]",
+    "recipe[iptables::setup]",
     "recipe[base::start_service]"
   ],
   "default_attributes" : {
@@ -49,7 +50,7 @@
     "nsd" : {
       "zones" : [{
         "zone_name" : "1mg.org",
-        "xfr" : ["127.0.0.1", "160.16.54.90", "153.120.38.37"]
+        "xfr" : ["127.0.0.1", "210.172.129.81"]
       }, {
         "zone_name" : "1mg.biz",
         "xfr" : ["127.0.0.1", "160.16.54.90", "153.120.38.37"]
