@@ -7,6 +7,7 @@
     "recipe[nsd::setup]",
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
+    "recipe[nginx::setup]",
     "recipe[base::start_service]"
   ],
   "default_attributes" : {
@@ -64,6 +65,9 @@
       "spawnfcgi": {
         "num": "5"
       }
+    },
+    "nginx" : {
+      "conf_lists" : ["server.1mg.org", "www.1mg.org", "www.1mg.biz", "ee-megane.com", "log_format"]
     }
   }
 }
