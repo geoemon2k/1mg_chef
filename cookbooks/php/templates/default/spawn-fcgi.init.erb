@@ -1,6 +1,6 @@
 #!/bin/sh
-USER=www-data
-GROUP=www-data
+USER=nginx
+GROUP=nginx
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 SSD="/sbin/start-stop-daemon" 
 PHP_FCGI_CHILDREN=10
@@ -25,7 +25,7 @@ case "$1" in
   start)
         log_daemon_msg "Starting spawn-fcgi" 
         if ! $FCGI_DAEMON -p $FCGI_PORT -f $FCGI_PROGRAM -u $USER -g $GROUP -C $PHP_FCGI_CHILDREN -P $FCGI_PIDFILE; then
-            log_end_msg 1
+            log_end_msg 0
         else
             log_end_msg 0
         fi
@@ -40,6 +40,10 @@ case "$1" in
         fi
         RETVAL=$?
   ;;
+  restart)
+        log_daemon_msg "Restarting Daemon"
+        $0 stop
+        $0 start
   *)
         echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload}" >&2
         exit 1
