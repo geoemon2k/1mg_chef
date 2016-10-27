@@ -3,7 +3,9 @@
   "name": "1mg",
   "run_list": [
     "recipe[base::setup]",
-    "recipe[sshd::setup]"
+    "recipe[sshd::setup]",
+    "recipe[nsd::setup]",
+    "recipe[base::start_service]"
   ],
   "default_attributes" : {
     "base": {
@@ -11,7 +13,8 @@
       "root_address": "keiji.ue@gmail.com",
       "on_services": [
       "ssh",
-      "cron"
+      "cron",
+      "nsd"
       ],
       "off_services": [
         "ajaxterm",

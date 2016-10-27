@@ -14,14 +14,3 @@ if node['base']['off_services']
     end
   end
 end
-
-
-if node['base']['on_services']
-  node['base']['on_services'].each do |name|
-    service 'enable_service_' + name do
-      service_name name
-      action :enable
-    end
-  end
-
-end

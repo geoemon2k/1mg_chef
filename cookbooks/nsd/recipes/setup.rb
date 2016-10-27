@@ -6,7 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-if node['platform'] == 'centos' && node['platform_version'].to_i < 7
+if (node['platform'] == 'centos' && node['platform_version'].to_i < 7) || 
+  (node['platform'] == 'ubuntu' && node['platform_version'].to_i < 14)
   package node['nsd']['pkg_name'] do
     action :install
     if node['nsd']['pkg_options']
@@ -65,7 +66,6 @@ template node['nsd']['etc'] + "/nsd.conf" do
 end
 
 service node['nsd']['service'] do
-#  action [:enable, :start]
-  action :start
+  action :nothing
   supports :reload => true, :status => true, :restart => true, :rebuild => true
 end
