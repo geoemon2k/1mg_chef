@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-template '/usr/local/1mg/bin/backup.sh' do
+template '/etc/cron.d/backup.sh' do
   source 'backup.sh.erb'
   owner 'root'
   group 'root'

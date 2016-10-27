@@ -1,0 +1,24 @@
+{
+  "json_class" : "Chef::Role",
+  "name": "1mg",
+  "run_list": [
+    "recipe[base::setup]"
+  ],
+  "default_attributes" : {
+    "base": {
+      "hostname": "server.1mg.org",
+      "root_address": "keiji.ue@gmail.com",
+      "on_services": [
+      "ssh",
+      "cron"
+      ],
+      "off_services": [
+        "ajaxterm",
+        "xinetd",
+        "postfix",
+        "saslauthd",
+        "apache2"
+      ]
+    }
+  }
+}
