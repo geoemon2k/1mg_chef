@@ -20,7 +20,8 @@
     "recipe[postfix::setup]",
     "recipe[fluentd::setup]",
     "recipe[iptables::setup]",
-    "recipe[base::setup_cucumber]"
+    "recipe[base::setup_cucumber]",
+    "recipe[base::start_service]"
   ],
   "default_attributes" : {
     "base": {

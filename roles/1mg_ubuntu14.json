@@ -5,6 +5,7 @@
     "recipe[base::setup]",
     "recipe[sshd::setup]",
     "recipe[nsd::setup]",
+    "recipe[mysql::setup_server]",
     "recipe[base::start_service]"
   ],
   "default_attributes" : {
@@ -14,7 +15,8 @@
       "on_services": [
       "ssh",
       "cron",
-      "nsd"
+      "nsd",
+      "mysql-server"
       ],
       "off_services": [
         "ajaxterm",

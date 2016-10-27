@@ -39,6 +39,6 @@ directory node['mysqld']['conf_lists']['datadir'] do
 end
 
 service node['mysqld']['service'] do
-  action [:enable, :start]
+  action :nothing
   supports :status => true, :restart => true
 end
