@@ -20,6 +20,23 @@
         "saslauthd",
         "apache2"
       ]
+    },
+    "sshd" : {
+      "conf_lists" : {
+        "PermitRootLogin" : "yes",
+        "ChallengeResponseAuthentication" : "no",
+        "IgnoreUserKnownHosts" : "yes",
+        "ClientAliveInterval" : "48"
+      },
+      "sftp_users": [{
+        "user" : "matsuyanyan",
+        "uid": "1001",
+        "authkey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHVloItqR9cpArJ3hmANpaXu2Wrf4ObMD6Vixou9kOltLrBXu9qDNyP+C0mxDNgev8dbucAVJvhq9PNlaraiGf5kCprH+unkq+azZ+yak4J2G6J3Rnf2dwneeX8O4u9IbB5EqNQJplh6CLn6g4puXQpWKmz+wCUQcsk3dZjzQeJpsLd2rVmReSnJVXzFIzSstw9KxOdwJc3Sowky/JYDhsdYvRsRz7H3QqCfYhLAljgFf3vckNKbl30q1XhLvopkjzDs653VujK3xoBfCLFCeR/gYCfX6jMBGkhHYtx9moOo3Ol1VTGm/jAOMfJ8i15RwNDcSpDs+6CCp5L5j5VzMf matsuyanyan@local"
+      }, {
+        "user": "keiji",
+        "uid": "1002",
+        "authkey": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAr05luRni2gtdW5rWPWym/0VFjz5fOaiGI6EUtn9uu9DmQ2x3oyJzp+6OIvFayJCQU0i+l0P2Feze+CSln1slg7ppZlbd3VKKdo/2MPo8UuQDs0ZS6xmQwb6da1PpTSjZ3dQtC0FgtXeZLN4cp2lnt8MbJHY7kSBarR9pJSKkhh8= uehata@server.1mg.org"
+      }]
     }
   }
 }
