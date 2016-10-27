@@ -2,7 +2,8 @@
   "json_class" : "Chef::Role",
   "name": "1mg",
   "run_list": [
-    "recipe[base::setup]"
+    "recipe[base::setup]",
+    "recipe[sshd::setup]"
   ],
   "default_attributes" : {
     "base": {

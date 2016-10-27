@@ -10,3 +10,8 @@ when 'centos', 'fedora'
   default['base']['off_services'] = Array.new
   default['base']['on_services'] = Array.new
 end
+default['base']['packages'] = [
+{
+  name => 'zsh'
+}
+]

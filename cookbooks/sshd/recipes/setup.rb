@@ -15,11 +15,7 @@ template node['sshd']['sshd_config'] do
   owner "root"
   group "root"
   mode "0600"
-end
-
-service node['sshd']['service'] do
-  action [:enable, :start]
-  supports :status => true, :restart => true
+  notifies :restart, 'service[' + node['sshd']['service'] + ']'
 end
 
 group 'sftponly' do
