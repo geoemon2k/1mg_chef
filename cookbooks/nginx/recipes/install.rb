@@ -26,5 +26,4 @@ user 'nginx' do
   gid 'nginx'
   home '/home/random'
   shell '/sbin/nologin'
-  supports :manage_home => false
 end
