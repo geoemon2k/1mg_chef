@@ -29,7 +29,6 @@ node["sshd"]["sftp_users"].each do |sftp_users|
     action :create
     gid "sftponly"
     shell '/bin/zsh'
-    home "/home/#{sftp_users['user']}" 
-    supports :manage_home => true
+    home "/home/#{sftp_users['user']}"
   end
 end
