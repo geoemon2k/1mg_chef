@@ -49,7 +49,7 @@ default['mysqld']['conf_lists']['mysqld'] = {
   'thread_stack' => '64K',
   'max_connections' => '2',
   'server-id' => '1',
-  'character-set-server=utf8' => 'utf8'
+  'character-set-server' => 'utf8'
 }
 end
 default['mysqld']['conf_lists']['mysql'] = {
