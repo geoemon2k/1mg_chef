@@ -8,6 +8,7 @@
     "recipe[mysql::setup_server]",
     "recipe[php::setup_with_spawnfcgi]",
     "recipe[nginx::setup]",
+    "recipe[matsusita::default]",
     "recipe[base::start_service]"
   ],
   "default_attributes" : {
