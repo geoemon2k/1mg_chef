@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 if (node['platform'] == 'centos' && node['platform_version'].to_i < 7) || 
-  (node['platform'] == 'ubuntu' && node['platform_version'].to_i < 14)
+  (node['platform'] == 'ubuntu' && node['platform_version'].to_i == 14)
   package node['nsd']['pkg_name'] do
     action :install
     if node['nsd']['pkg_options']
