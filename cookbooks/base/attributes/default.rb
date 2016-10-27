@@ -11,5 +11,6 @@ when 'centos', 'fedora'
   default['base']['on_services'] = Array.new
 end
 default['base']['packages'] = [{
-  'name' => 'zsh'
+  'name' => 'zsh',
+  'name' => 'dnsutils'
 }]
