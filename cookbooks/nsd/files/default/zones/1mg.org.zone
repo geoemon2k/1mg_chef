@@ -1,6 +1,6 @@
 $TTL 300
 @ IN SOA 1mg.org. root.1mg.org. (
-    2016102700 ; Serial
+    2016102701 ; Serial
     300 ; Refresh
     600 ; Retry
     43200 ; Expire
@@ -8,7 +8,7 @@ $TTL 300
 
 ;NS
 @               IN NS NS3.MAIHAMA-NET.COM.
-@               IN NS NS1.MAIHAMA-NET.COM.
+@               IN NS 2ND.DNSV.JP.
 
 ;MX
 @               IN MX 10 www
