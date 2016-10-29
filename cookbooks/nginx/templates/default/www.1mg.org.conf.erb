@@ -3,7 +3,7 @@ server {
 #    listen [<%= node[:ip6address] %>]:80;
 <% end -%>
     listen       80;
-    server_name  www.1mg.org;
+    server_name  1mg.org *.1mg.org;
 
     #charset koi8-r;
     access_log  /var/log/nginx/www.1mg.org.access.log ltsv;
