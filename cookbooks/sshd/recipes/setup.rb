@@ -29,7 +29,16 @@ group 'sftponly' do
 end
 
 if node['sshd']['sftp_users'].nil? == false && node['sshd']['sftp_users'].empty? == false
+
   node["sshd"]["sftp_users"].each do |sftp_users|
+    # should be owner root for sftp directory
+    directory "/usr/local/1mg/data/#{sftp_users['user']}" do
+      owner 'root'
+      group 'sftponly'
+      mode '0755'
+      action :create
+    end
+
     link "/home/#{sftp_users['user']}" do
       to "/usr/local/1mg/data/#{sftp_users['user']}"
     end
