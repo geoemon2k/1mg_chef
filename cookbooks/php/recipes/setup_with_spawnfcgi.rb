@@ -45,6 +45,14 @@ when 'ubuntu'
     group 'root'
     mode 0755
   end
+
+  template '/etc/php5/mods-available/apcu.ini' do
+    source 'apcu.ini'
+    owner 'root'
+    group 'root'
+    mode 0755
+    notifies :restart, 'service[' + node['php']['spawnfcgi']['service'] + ']'
+  end
 end
 
 service node['php']['spawnfcgi']['service'] do

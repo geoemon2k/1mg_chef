@@ -65,7 +65,8 @@
         {"pkg_name": "php5-cli"},
         {"pkg_name": "php5-cgi"},
         {"pkg_name": "php5-mysql"},
-        {"pkg_name": "php5-common"}
+        {"pkg_name": "php5-common"},
+        {"pkg_name": "php5-apcu"},
       ],
       "spawnfcgi": {
         "num": "5"
