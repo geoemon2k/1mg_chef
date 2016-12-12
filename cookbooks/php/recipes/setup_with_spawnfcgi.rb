@@ -47,7 +47,7 @@ when 'ubuntu'
   end
 
   template '/etc/php5/mods-available/apcu.ini' do
-    source 'apcu.ini'
+    source 'apcu.ini.erb'
     owner 'root'
     group 'root'
     mode 0755
