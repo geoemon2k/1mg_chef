@@ -50,7 +50,7 @@ when 'ubuntu'
     source 'apcu.ini.erb'
     owner 'root'
     group 'root'
-    mode 0755
+    mode 0644
     notifies :restart, 'service[' + node['php']['spawnfcgi']['service'] + ']'
   end
 end
