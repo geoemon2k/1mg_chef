@@ -1,6 +1,6 @@
 $TTL 120
 @ IN SOA 1mg.biz. root.1mg.biz. (
-    2017012600 ; Serial
+    2017012700 ; Serial
     300 ; Refresh
     600 ; Retry
     43200; Expire
@@ -9,11 +9,11 @@ $TTL 120
 @               IN NS 1mg.ddns.net.
 @               IN NS 1mg2.ddns.net.
 
-@               IN A 210.250.250.128
+@               IN A 164.46.232.145
 www             IN CNAME @
 
 @               IN MX 10 mail
-mail            IN A 210.250.250.128
+mail            IN A 164.46.232.145
 
 ;SPF
 @               IN TXT "v=spf1 redirect=_spf.1mg.org"
