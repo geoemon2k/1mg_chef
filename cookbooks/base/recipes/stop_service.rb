@@ -11,19 +11,6 @@ if node['base']['off_services']
     service 'disable_service_' + name do
       service_name name
       action :disable
-      only_if "chkconfig " + name
     end
   end
-end
-
-
-if node['base']['on_services']
-  node['base']['on_services'].each do |name|
-    service 'enable_service_' + name do
-      service_name name
-      action :enable
-      only_if "chkconfig " + name
-    end
-  end
-
 end

@@ -1,20 +1,22 @@
 $TTL 120
 @ IN SOA 1mg.biz. root.1mg.biz. (
-    2015070601 ; Serial
+    2017031700 ; Serial
     300 ; Refresh
     600 ; Retry
     43200; Expire
     300 ) ; Minimum
 ;NS
-@               IN NS NS3.MAIHAMA-NET.COM.
-@               IN NS NS1.MAIHAMA-NET.COM.
+@               IN NS 1mg.ddns.net.
+@               IN NS 1mg2.ddns.net.
 
-@               IN A 210.250.250.128
+;@               IN A 210.250.250.128
+@               IN A 164.46.232.216
 www             IN CNAME @
 
 @               IN MX 10 mail
-mail            IN A 210.250.250.128
+mail            IN A 164.46.232.216
+;mail            IN A 210.250.250.128
 
 ;SPF
 @               IN TXT "v=spf1 redirect=_spf.1mg.org"
-_spf            IN TXT "v=spf1 +ip4:210.250.250.128/32 ~all"
+_spf            IN TXT "v=spf1 +ip4:210.250.250.128/32 +ip4:164.46.0.0/16 ~all"

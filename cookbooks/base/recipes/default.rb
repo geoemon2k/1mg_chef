@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-template '/usr/local/1mg/bin/backup.sh' do
+template '/etc/cron.d/backup.sh' do
   source 'backup.sh.erb'
   owner 'root'
   group 'root'
@@ -16,5 +16,5 @@ end
 cron 'backup' do
   hour '0'
   minute '0'
-  command 'sh /usr/local/1mg/bin/backup.sh'
+  command 'sh /etc/cron.d/backup.sh'
 end

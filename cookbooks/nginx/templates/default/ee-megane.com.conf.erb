@@ -1,15 +1,16 @@
 server {
-<% if node[:ip6address] -%> 
+    client_max_body_size 20M;
+<% if node[:ip6address] %> 
 #    listen [<%= node[:ip6address] %>]:80;
-<% end -%>
+<% end %>
     listen       80;
-    server_name  www.1mg.org;
+    server_name  ee-megane.com *.ee-megane.com;
 
     #charset koi8-r;
-    access_log  /var/log/nginx/www.1mg.org.access.log  main;
-    error_log  /var/log/nginx/www.1mg.org.error.log debug;
+    access_log  /var/log/nginx/ee-megane.com.access.log main;
+    error_log  /var/log/nginx/ee-megane.com.error.log debug;
 
-    root /usr/local/1mg/www/www.1mg.org/;
+    root /usr/local/1mg/www/ee-megane.com/;
     index  index.php index.html index.htm;
     sendfile          off;
 
@@ -31,19 +32,14 @@ server {
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     #
     location ~ \.php$ {
-        root /usr/local/1mg/www/www.1mg.org;
+        root /usr/local/1mg/www/ee-megane.com;
         include /etc/nginx/fastcgi_params;
-        fastcgi_pass unix:/var/run/php-fcgi.sock;
+        fastcgi_pass     127.0.0.1:9000;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
     location / {
         expires 1d;
-    }
-
-    location /wp/wp-admin {
-        auth_basic    "Need to Auth!!";
-        auth_basic_user_file  "/usr/local/1mg/www/.htpasswd";
     }
     
     # deny access to .htaccess files, if Apache's document root
@@ -52,9 +48,4 @@ server {
     #location ~ /\.ht {
     #    deny  all;
     #}
-    location = /status {
-        stub_status on;
-        allow 183.76.0.0/16;
-        deny all;
-    }
 }

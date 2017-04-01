@@ -31,7 +31,11 @@ template node['base']['etc'] + '/my.cnf' do
   notifies :restart, 'service[' + node['mysqld']['service'] + ']'
 end
 
-directory node['mysqld']['conf_lists']['datadir'] do
+link '/var/lib/mysql' do
+  to '/usr/local/1mg/var/lib/mysql'
+end
+
+directory node['mysqld']['conf_lists']['mysqld']['datadir'] do
   owner node['mysqld']['owner']
   group node['mysqld']['group']
   mode "0755"
@@ -39,6 +43,6 @@ directory node['mysqld']['conf_lists']['datadir'] do
 end
 
 service node['mysqld']['service'] do
-  action [:enable, :start]
+  action :nothing
   supports :status => true, :restart => true
 end

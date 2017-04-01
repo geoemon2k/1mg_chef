@@ -8,6 +8,6 @@ case node[:platform]
 when 'centos'
   default['nsd']['pkg_options'] = '--enablerepo=epel'
 when 'ubuntu'
-  default['nsd']['etc'] = '/etc/nsd3'
+  default['nsd']['etc'] = '/etc/nsd'
   default['nsd']['pkg_name'] = 'nsd3'
 end

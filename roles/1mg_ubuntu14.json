@@ -3,17 +3,11 @@
   "name": "1mg",
   "run_list": [
     "recipe[base::setup]",
-    "recipe[yum::epel]",
-    "recipe[yum::remi]",
     "recipe[sshd::setup]",
     "recipe[nsd::setup]",
-    "recipe[mariadb::setup]",
-    "recipe[nginx::install]",
-    "recipe[phpfpm::default]",
+    "recipe[mysql::setup_server]",
+    "recipe[php::setup_with_spawnfcgi]",
     "recipe[nginx::setup]",
-    "recipe[vsftpd::setup]",
-    "recipe[postfix::setup]",
-    "recipe[iptables::setup]",
     "recipe[matsusita::default]",
     "recipe[base::start_service]"
   ],
@@ -22,27 +16,18 @@
       "hostname": "server.1mg.org",
       "root_address": "keiji.ue@gmail.com",
       "on_services": [
-      "crond",
-      "modules_dep",
-      "network",
-      "portreserve",
-      "rsyslog"
+      "ssh",
+      "cron",
+      "nsd",
+      "mysql",
+      "spawn-fcgi"
       ],
       "off_services": [
-        "saslauthd",
-        "xinetd",
-        "smadmd",
-        "serversman",
-        "httpd",
         "ajaxterm",
-        "netfs",
-        "rpcbind",
-        "ip6tables",
-        "lvm2-monitor",
-        "messagebus",
-        "udev-post",
-        "netconsole",
-        "firewalld"
+        "xinetd",
+        "postfix",
+        "saslauthd",
+        "apache2"
       ]
     },
     "sshd" : {
@@ -62,44 +47,33 @@
         "authkey": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAr05luRni2gtdW5rWPWym/0VFjz5fOaiGI6EUtn9uu9DmQ2x3oyJzp+6OIvFayJCQU0i+l0P2Feze+CSln1slg7ppZlbd3VKKdo/2MPo8UuQDs0ZS6xmQwb6da1PpTSjZ3dQtC0FgtXeZLN4cp2lnt8MbJHY7kSBarR9pJSKkhh8= uehata@server.1mg.org"
       }]
     },
-    "jenkins" : {
-      "listen" : "127.0.0.1",
-      "ajp_port" : "-1",
-      "args" : "--prefix=/jenkins",
-      "plugins" : ["git"]
-    },
     "nsd" : {
       "zones" : [{
         "zone_name" : "1mg.org",
-        "xfr" : ["127.0.0.1", "160.16.54.90", "153.120.38.37"]
+        "xfr" : ["127.0.0.1", "210.172.129.81", "92.243.3.119", "160.16.54.90", "198.104.58.211", "153.120.38.37"]
+      }, {
+        "zone_name" : "ee-megane.com",
+        "xfr" : ["127.0.0.1", "160.16.54.90", "198.104.58.211", "153.120.38.37"]
       }, {
         "zone_name" : "1mg.biz",
         "xfr" : ["127.0.0.1", "160.16.54.90", "153.120.38.37"]
         }
       ]
     },
-    "nginx" : {
-      "conf_lists" : ["server.1mg.org", "www.1mg.org", "www.1mg.biz", "ee-megane.com", "log_format"]
-    },
     "php": {
       "packages": [
-        {"pkg_name": "php-mbstring"},
-        {"pkg_name": "php-mcrypt", "pkg_option": "--enablerepo=epel"},
-        {"pkg_name": "php-mysql"},
-        {"pkg_name": "php-pecl-apc"},
-        {"pkg_name": "php-redis", "pkg_option": "--enablerepo=epel"},
-        {"pkg_name": "php-gd"}
-        ],
+        {"pkg_name": "php5-cli"},
+        {"pkg_name": "php5-cgi"},
+        {"pkg_name": "php5-mysql"},
+        {"pkg_name": "php5-common"},
+        {"pkg_name": "php5-apcu"}
+      ],
       "spawnfcgi": {
         "num": "5"
       }
     },
-    "mysqld" : {
-      "conf_lists" : {
-        "datadir" : "/usr/local/1mg/var/lib/mysql/"
-      }
+    "nginx" : {
+      "conf_lists" : ["server.1mg.org", "www.1mg.org", "www.1mg.biz", "ee-megane.com", "log_format"]
     }
-  },
-  "over_attributes" : {
   }
 }

@@ -6,6 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+include_recipe 'nginx::install'
+
 cookbook_file node['nginx']['include_dir'] + '/default.conf' do
    action :delete
 end

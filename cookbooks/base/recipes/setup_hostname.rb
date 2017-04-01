@@ -11,10 +11,13 @@ execute 'set_hostname' do
   command "hostname " + node['base']['hostname']
 end
 
-execute 'add_hostname' do
-  action :run
-  command "echo 'HOSTNAME=" + node['base']['hostname'] + "' >> " + node['base']['sysconfig'] + "/network"
-  not_if "egrep '^HOSTNAME=" + node['base']['hostname'] + "' " + node['base']['sysconfig'] + "/network"
+case node[:platform]
+when 'centos', 'fedora'
+  execute 'add_hostname' do
+    action :run
+    command "echo 'HOSTNAME=" + node['base']['hostname'] + "' >> " + node['base']['sysconfig'] + "/network"
+    not_if "egrep '^HOSTNAME=" + node['base']['hostname'] + "' " + node['base']['sysconfig'] + "/network"
+  end
 end
 
 template '/etc/hostname' do
@@ -24,3 +27,9 @@ template '/etc/hostname' do
   mode 0644
 end
 
+template '/etc/hosts' do
+  source 'hosts.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+end
