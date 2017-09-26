@@ -16,6 +16,9 @@ server {
     index  index.php index.html index.htm;
     sendfile          off;
 
+    auth_basic    "Need to Auth!!";
+    auth_basic_user_file  "/usr/local/1mg/www/.htpasswd";
+
     location ~ \.php$ {
         root /usr/local/1mg/www/server.1mg.org;
         include /etc/nginx/fastcgi_params;
@@ -25,13 +28,6 @@ server {
     }
     
     location / {
-        satisfy any;
-        allow 164.46.240.32;
-        allow 183.181.14.200;
-        deny all;
-        auth_basic    "Need to Auth!!";
-        auth_basic_user_file  "/usr/local/1mg/www/.htpasswd";
-        proxy_set_header Authorization "";
         expires 1d;
     }
     
