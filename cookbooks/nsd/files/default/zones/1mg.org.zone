@@ -1,6 +1,6 @@
 $TTL 300
 @ IN SOA 1mg.org. root.1mg.org. (
-    2017012600 ; Serial
+    2017012602 ; Serial
     300 ; Refresh
     600 ; Retry
     43200 ; Expire
@@ -16,6 +16,7 @@ $TTL 300
 ;SPF
 @               IN TXT "v=spf1 redirect=_spf.1mg.org"
 _spf            IN TXT "v=spf1 +ip4:183.181.14.200/32 ~all"
+piw1            IN TXT "v=spf1 +ip4:106.161.188.215/32 ~all"
 
 ;VPS
 @               IN A 183.181.14.200
@@ -23,5 +24,6 @@ www             IN A 183.181.14.200
 www				IN AAAA 2001:2e8:624:0:2:1:0:cc
 server          IN A 183.181.14.200
 server          IN AAAA 2001:2e8:624:0:2:1:0:cc
+piw1            IN A 106.161.188.215
 ;DLV DNSSEC
 ;dlv.1mg.org. 0 IN TXT "DLV:1:szleruhnshoo"
