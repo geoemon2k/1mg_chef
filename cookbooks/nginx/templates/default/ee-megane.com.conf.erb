@@ -31,6 +31,27 @@ server {
 
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     #
+    # Wordpress Security
+    location ~ (xmlrpc|wp-activate|wp-signup).php {
+        deny all;
+    }
+
+    location ~ /wordpress/(wp-login.php|wp-admin/) {
+        auth_basic    "Need to Auth!!";
+        auth_basic_user_file  "/usr/local/1mg/www/.ee.htpasswd";
+        root /usr/local/1mg/www/ee-megane.com;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass     127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+    location ~ \.php$ {
+        root /usr/local/1mg/www/ee-megane.com;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass     127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
     location ~ \.php$ {
         root /usr/local/1mg/www/ee-megane.com;
         include /etc/nginx/fastcgi_params;
